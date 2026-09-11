@@ -1,0 +1,65 @@
+{
+  "name": "dsh-locale-pl",
+  "version": "1.0.0",
+  "description": "Polish (Polski) language pack for the DeepSeek Harness web UI — a community DSH client plugin that adds pl to Settings → General → Language.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "i18n",
+    "locale",
+    "localization",
+    "polish",
+    "pl",
+    "translation"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "dict",
+    "README.md",
+    "README.en.md",
+    "GLOSSARY.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "check:strict": "node scripts/check.mjs --strict",
+    "test": "node --test",
+    "extract": "node scripts/extract.mjs",
+    "verify": "npm run build && npm run check:strict && npm test"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}

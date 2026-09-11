@@ -1,0 +1,11 @@
+{
+  "dialog.close": "Zamknij",
+  "dialog.commandFailed": "Nie udało się rozpocząć eksportu sesji.",
+  "dialog.errorTitle": "Eksport sesji nie powiódł się",
+  "dialog.preparingDescription": "Przygotowywanie pliku ZIP z tą sesją, jej podsesjami i załącznikami.",
+  "dialog.preparingTitle": "Eksportowanie sesji",
+  "dialog.successDescription": "Przeglądarka pobiera plik ZIP sesji.",
+  "dialog.successTitle": "Rozpoczęto pobieranie sesji",
+  "header.more": "Więcej działań",
+  "menu.download": "Pobierz dziennik sesji"
+}

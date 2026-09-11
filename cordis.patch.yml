@@ -1,0 +1,13 @@
+# dsh-locale-pl bundle patch.
+#
+# Mounts the pack as a loader row so the client-modules scanner sees its
+# `dsh.client` declaration and serves the browser half. The row is a plain
+# plugin with no configuration: everything (the language definition and every
+# dictionary) registers in the browser against the official DSH locale
+# registry (@deepseek-ai/dsh-client-locale), so no upstream file is touched.
+#
+# The id is the row's stable handle; a user's profile cordis.patch.yml may
+# address or disable it by this id.
+- insert:
+    - id: locale-pl
+      name: dsh-locale-pl

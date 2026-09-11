@@ -1,0 +1,8 @@
+{
+  "chip.exitFailed": "Nie udało się wyjść z trybu planowania",
+  "chip.label": "Plan",
+  "chip.off.aria": "Tryb planowania wyłączony, naciśnij, aby włączyć",
+  "chip.off.title": "Tryb planowania wyłączony — kliknij, aby włączyć (/plan)",
+  "chip.on.aria": "Tryb planowania włączony, naciśnij, aby wyłączyć",
+  "chip.on.title": "Tryb planowania włączony — kliknij, aby wyłączyć (/plan off)"
+}

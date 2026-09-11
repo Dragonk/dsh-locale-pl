@@ -1,0 +1,9 @@
+{
+  "menu.userOnly": "tylko dla użytkownika",
+  "row.failed": "Nie udało się wczytać umiejętności",
+  "row.inspect": "Sprawdź",
+  "row.instructions": "Instrukcje",
+  "row.running": "Wczytywanie umiejętności",
+  "row.stopped": "Wczytywanie umiejętności zatrzymane",
+  "row.title": "Umiejętność"
+}

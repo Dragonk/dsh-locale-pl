@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly upstream-drift check (Mondays 06:00 UTC).
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: build · check:strict · test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Build the browser bundle
+        run: npm run build
+      - name: Fail if the committed bundle is stale
+        run: git diff --exit-code -- lib/client.js
+      - name: Check translation completeness
+        run: npm run check:strict
+      - name: Run tests
+        run: npm test
+
+  upstream-drift:
+    name: upstream drift
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Find the newest DeepSeek Harness tag
+        id: upstream
+        run: |
+          TAG=$(git ls-remote --tags --sort=-v:refname https://github.com/deepseek-ai/deepseek-harness.git 'dsh-v*' | head -n1 | sed 's#.*refs/tags/##')
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "Newest upstream tag: $TAG"
+      - name: Extract the newest English corpus
+        run: node scripts/update-upstream.mjs --ref "${{ steps.upstream.outputs.tag }}"
+      - name: Report drift (fails when upstream added keys)
+        run: npm run check:strict

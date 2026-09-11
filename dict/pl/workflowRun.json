@@ -1,0 +1,20 @@
+{
+  "member.empty": "Pusta nazwa członka",
+  "member.open": "Otwórz {name}",
+  "phase.empty": "Pusta nazwa fazy",
+  "phase.unassigned": "Bez fazy",
+  "run.empty": "Nie uruchomiono żadnych członków",
+  "run.members.one": "{count} członek",
+  "run.members.other": "Członkowie: {count}",
+  "run.title": "{name}",
+  "status.cancelled": "Anulowano",
+  "status.completed": "Ukończono",
+  "status.failed": "Niepowodzenie",
+  "status.interrupted": "Przerwano",
+  "status.running": "Działa",
+  "statusCount.cancelled": "Anulowano: {count}",
+  "statusCount.completed": "Ukończono: {count}",
+  "statusCount.failed": "Niepowodzenia: {count}",
+  "statusCount.interrupted": "Przerwano: {count}",
+  "statusCount.running": "Działa: {count}"
+}

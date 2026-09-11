@@ -1,0 +1,15 @@
+{
+  "browser.cancel": "Anuluj",
+  "browser.create": "Utwórz",
+  "browser.createIn": "Nowy folder w „{name}”",
+  "browser.editPath": "Edytuj ścieżkę",
+  "browser.folderName": "Nazwa folderu",
+  "browser.home": "Katalog domowy",
+  "browser.loading": "Wczytywanie…",
+  "browser.newFolder": "Nowy folder",
+  "browser.open": "Otwórz",
+  "browser.showHidden": "Pokaż ukryte pliki",
+  "browser.title": "Wybierz katalog obszaru roboczego",
+  "browser.truncated": "Zbyt wiele folderów do wyświetlenia; pokazano tylko początek.",
+  "browser.untitledFolder": "Folder bez nazwy"
+}

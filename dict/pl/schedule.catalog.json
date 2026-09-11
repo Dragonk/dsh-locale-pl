@@ -1,0 +1,20 @@
+{
+  "frequency.every": "Co {value} {unit}",
+  "frequency.once": "Jednorazowo",
+  "list.aria": "Aktywne przypomnienia",
+  "relative.future": "za {value} {unit}",
+  "relative.now": "Teraz",
+  "relative.overdue": "{value} {unit} po terminie",
+  "status.overdue": "Po terminie",
+  "status.scheduled": "Zaplanowane",
+  "trigger.one": "{count} przypomnienie",
+  "trigger.other": "Przypomnienia: {count}",
+  "unit.day.one": "dzień",
+  "unit.day.other": "dni",
+  "unit.hour.one": "godz.",
+  "unit.hour.other": "godz.",
+  "unit.minute.one": "min",
+  "unit.minute.other": "min",
+  "unit.second.one": "sek.",
+  "unit.second.other": "sek."
+}

@@ -1,0 +1,23 @@
+{
+  "chrome.collapse": "Zwiń panel boczny",
+  "chrome.collapseAria": "Zwiń prawy panel boczny",
+  "chrome.exitFullscreen": "Wyjdź z pełnego ekranu",
+  "chrome.expand": "Otwórz panel boczny",
+  "chrome.expandAria": "Otwórz prawy panel boczny",
+  "chrome.toFullscreen": "Pełny ekran",
+  "dock.addTab": "Nowa karta",
+  "dock.closeFloat": "Zamknij",
+  "dock.closeTab": "Zamknij",
+  "dock.dockFloat": "Przenieś z powrotem do panelu bocznego",
+  "dock.drop.bottom": "Dodaj podział dolny",
+  "dock.drop.center": "Przenieś tutaj",
+  "dock.drop.left": "Dodaj podział lewy",
+  "dock.drop.right": "Dodaj podział prawy",
+  "dock.drop.top": "Dodaj podział górny",
+  "dock.emptyPane": "Puste okno",
+  "dock.splitPane": "Podziel",
+  "dock.splitPaneDisabled": "Limit to dwa okna",
+  "dock.splitPaneNarrow": "Za mało miejsca na podział; poszerz panel boczny",
+  "tab.guide.title": "Start",
+  "tab.unavailable": "Nic tutaj nie potrafi jeszcze wyświetlić tego typu zawartości."
+}
