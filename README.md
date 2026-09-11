@@ -121,6 +121,7 @@ scripts/update-upstream.mjs  odświeża korpus z wybranego tagu DSH
 upstream/corpus.json  angielskie źródło (klucz → {en, zh})
 upstream/reference.json  z jakiego tagu/commita pochodzi korpus
 tests/                testy jednostkowe i integracyjne
+docs/publishing.md    wydanie nowej wersji i zgłoszenie do ekosystemu DSH
 GLOSSARY.md           kontrakt terminologiczny
 ```
 

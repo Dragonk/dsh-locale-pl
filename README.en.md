@@ -118,6 +118,7 @@ scripts/update-upstream.mjs  refresh the corpus from a chosen DSH tag
 upstream/corpus.json  English source (key → {en, zh})
 upstream/reference.json  which tag/commit the corpus came from
 tests/                unit and integration tests
+docs/publishing.md    releasing a version and submitting to the DSH ecosystem
 GLOSSARY.md           terminology contract (Polish)
 ```
 
