@@ -73,14 +73,22 @@ to go back to the browser language.
 ## Tests and conformance checking
 
 ```bash
-npm run build        # generate lib/client.js from dict/pl/*.json
-npm run check        # compare translations against upstream/corpus.json (report)
-npm run check:strict # exit non-zero when anything is missing (CI gate)
-npm test             # unit tests + an integration test against LocaleRuntime
-npm run verify       # build + check:strict + test
+npm run fetch:runtime # install @deepseek-ai/dsh-client-locale at upstream/reference.json's version
+npm run build         # generate lib/client.js from dict/pl/*.json
+npm run check         # compare translations against upstream/corpus.json (report)
+npm run check:strict  # exit non-zero when anything is missing (CI gate)
+npm test              # 20 tests: dictionaries, bundle, drift, LocaleRuntime integration
+npm run drift -- --old a.json --new b.json   # compare two corpora
+npm run verify        # fetch:runtime + build + check:strict + tests (LocaleRuntime required)
 ```
 
-The checker detects:
+`npm run verify` is the full release gate: it runs exactly what CI runs and forces
+the integration test to execute. Plain `npm test` is the convenient local path —
+when the official locale package is absent it skips only the integration test. CI
+sets `DSH_REQUIRE_LOCALE_RUNTIME=1`, so a missing runtime **fails the build rather
+than skipping**.
+
+The checker (`check.mjs`) detects:
 
 - missing namespaces and keys relative to the English source,
 - extra / unknown keys,
@@ -89,9 +97,19 @@ The checker detects:
   `upstream/identical-allowlist.json`),
 - missing plural siblings.
 
-You do not need DSH installed to run `check` and `test`: the English corpus is
-committed in `upstream/corpus.json`, and the integration test skips itself when
-the official locale package cannot be found.
+Upstream drift detection (`scripts/lib/corpus-diff.mjs`, `scripts/drift.mjs`)
+compares two corpora and reports:
+
+- namespaces and keys added or removed,
+- **changed English text under an unchanged key** — flagged as
+  `UPSTREAM STRING CHANGED — REVIEW REQUIRED` (the key still resolves, but the
+  Polish translation needs a human review),
+- changed placeholder sets (`{count}` → `{total}`).
+
+`check` and the drift tests need neither DSH nor network: the English corpus is
+committed in `upstream/corpus.json` and the drift tests run against local fixtures
+in `tests/fixtures/`. Only the integration test downloads
+`@deepseek-ai/dsh-client-locale`.
 
 ## Reporting a translation bug
 
@@ -114,10 +132,15 @@ cordis.patch.yml      profile layer: mounts the plugin as a loader row
 scripts/extract.mjs   extract the English corpus from DSH sources
 scripts/build.mjs     compose lib/client.js from the dictionaries
 scripts/check.mjs     completeness and conformance checker
-scripts/update-upstream.mjs  refresh the corpus from a chosen DSH tag
+scripts/lib/corpus-diff.mjs  pure two-corpus comparison
+scripts/drift.mjs     CLI: report changes between two corpora
+scripts/update-upstream.mjs  refresh the corpus from a DSH tag and report drift
+scripts/fetch-locale-runtime.mjs  install the official locale package for tests
+scripts/verify.mjs    full gate: runtime + build + check:strict + tests
 upstream/corpus.json  English source (key → {en, zh})
 upstream/reference.json  which tag/commit the corpus came from
-tests/                unit and integration tests
+tests/                unit, drift, and integration tests
+tests/fixtures/       local corpus fixtures for the drift tests
 docs/publishing.md    releasing a version and submitting to the DSH ecosystem
 GLOSSARY.md           terminology contract (Polish)
 ```
@@ -127,25 +150,29 @@ GLOSSARY.md           terminology contract (Polish)
 When DSH adds new strings:
 
 ```bash
-# 1. refresh the English source from the new tag
-node scripts/update-upstream.mjs --ref dsh-v0.1.5-rc.2
+# 1. refresh the English source from the new tag and read the drift report
+node scripts/update-upstream.mjs --ref dsh-v0.1.5-rc.2 --fail-on-drift
+#    the report is also written to upstream/drift-report.md
 
 # 2. see what is missing
 npm run check
 
 # 3. translate the new keys in dict/pl/<namespace>.json
 #    (add new namespaces too; follow GLOSSARY.md)
+#    for UPSTREAM STRING CHANGED entries, re-verify the existing translation
 
-# 4. build and test
-npm run build && npm run check:strict && npm test
+# 4. run the full gate
+npm run verify
 
 # 5. release
 #    update CHANGELOG.md, bump package.json version, commit, tag, push
 ```
 
-CI (GitHub Actions) runs `build`, `check:strict`, and `test` on every push and
-pull request, and detects upstream drift weekly. There is no automatic
-translation — every new string goes through review.
+On every push and pull request CI runs `build`, a committed-bundle freshness check,
+`check:strict`, and the tests with the real `LocaleRuntime` **required**. A separate
+weekly job fetches the newest DSH tag, produces a drift report, and **fails** when
+upstream added, removed, or changed anything — including rewording an existing
+English string. That job only reports: it never commits, pushes, or translates.
 
 ## Safety and fallback
 

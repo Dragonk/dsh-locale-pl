@@ -6,8 +6,8 @@ Ten dokument opisuje proces wydania pakietu oraz zgłoszenia go do ekosystemu DS
 
 ```bash
 # 1. odśwież korpus i przetłumacz nowe klucze (patrz README → Aktualizacje)
-node scripts/update-upstream.mjs --ref <tag>
-npm run build && npm run check:strict && npm test
+node scripts/update-upstream.mjs --ref <tag> --fail-on-drift
+npm run verify   # fetch:runtime + build + check:strict + testy (LocaleRuntime wymagany)
 
 # 2. zaktualizuj CHANGELOG.md i podnieś "version" w package.json
 

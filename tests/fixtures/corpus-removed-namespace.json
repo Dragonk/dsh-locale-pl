@@ -1,0 +1,16 @@
+{
+  "alpha": {
+    "greeting": {
+      "en": "Hello",
+      "zh": "你好"
+    },
+    "farewell": {
+      "en": "Goodbye",
+      "zh": "再见"
+    },
+    "counter": {
+      "en": "{count} items",
+      "zh": "{count} 项"
+    }
+  }
+}

@@ -6,7 +6,7 @@ on:
   pull_request:
   workflow_dispatch:
   schedule:
-    # Weekly upstream-drift check (Mondays 06:00 UTC).
+    # Weekly upstream compatibility check (Mondays 06:00 UTC).
     - cron: '0 6 * * 1'
 
 permissions:
@@ -27,7 +27,16 @@ jobs:
         run: git diff --exit-code -- lib/client.js
       - name: Check translation completeness
         run: npm run check:strict
-      - name: Run tests
+      - name: Install the pinned DSH locale runtime
+        # Installs @deepseek-ai/dsh-client-locale at the version recorded in
+        # upstream/reference.json, so the integration test runs against the DSH
+        # release this pack claims to support.
+        run: npm run fetch:runtime
+      - name: Run tests (LocaleRuntime integration required)
+        # DSH_REQUIRE_LOCALE_RUNTIME=1 turns a missing runtime into a failure:
+        # the only test that exercises real DSH code must never skip in CI.
+        env:
+          DSH_REQUIRE_LOCALE_RUNTIME: '1'
         run: npm test
 
   upstream-drift:
@@ -42,10 +51,43 @@ jobs:
       - name: Find the newest DeepSeek Harness tag
         id: upstream
         run: |
-          TAG=$(git ls-remote --tags --sort=-v:refname https://github.com/deepseek-ai/deepseek-harness.git 'dsh-v*' | head -n1 | sed 's#.*refs/tags/##')
+          set -euo pipefail
+          # Read the whole listing into a variable first: piping git straight into
+          # head under 'pipefail' can abort the step with SIGPIPE.
+          TAGS=$(git ls-remote --tags --sort=-v:refname \
+            https://github.com/deepseek-ai/deepseek-harness.git 'dsh-v*')
+          TAG=$(printf '%s\n' "$TAGS" | sed -n '1s#.*refs/tags/##p')
+          if [ -z "$TAG" ]; then
+            echo "::error::No dsh-v* tag found upstream"
+            exit 1
+          fi
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "Newest upstream tag: $TAG"
-      - name: Extract the newest English corpus
-        run: node scripts/update-upstream.mjs --ref "${{ steps.upstream.outputs.tag }}"
-      - name: Report drift (fails when upstream added keys)
+      - name: Extract the newest corpus and detect drift
+        id: drift
+        # Report first, fail afterwards, so the full report always reaches the
+        # job summary even on a failing run.
+        continue-on-error: true
+        run: |
+          node scripts/update-upstream.mjs \
+            --ref "${{ steps.upstream.outputs.tag }}" \
+            --fail-on-drift
+      - name: Check translations against the new corpus
+        # New/removed keys and placeholder drift surface here as untranslated or
+        # unknown keys.
+        continue-on-error: true
+        id: check
         run: npm run check:strict
+      - name: Publish the drift report
+        if: always()
+        run: |
+          {
+            echo "## Upstream drift: ${{ steps.upstream.outputs.tag }}"
+            echo
+            cat upstream/drift-report.md 2>/dev/null || echo "No drift report was produced."
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Fail when upstream needs a human review
+        if: steps.drift.outcome == 'failure' || steps.check.outcome == 'failure'
+        run: |
+          echo "::error::Upstream locale drift detected. Review the drift report in the job summary and translate the affected keys in dict/pl."
+          exit 1

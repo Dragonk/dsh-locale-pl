@@ -73,14 +73,22 @@ chcesz wrócić do języka przeglądarki.
 ## Testy i kontrola zgodności
 
 ```bash
-npm run build        # generuje lib/client.js ze słowników dict/pl/*.json
-npm run check        # porównuje tłumaczenia z upstream/corpus.json (raport)
-npm run check:strict # kończy się kodem != 0 przy brakach (bramka CI)
-npm test             # testy jednostkowe + integracyjny test z LocaleRuntime
-npm run verify       # build + check:strict + test
+npm run fetch:runtime # instaluje @deepseek-ai/dsh-client-locale w wersji z upstream/reference.json
+npm run build         # generuje lib/client.js ze słowników dict/pl/*.json
+npm run check         # porównuje tłumaczenia z upstream/corpus.json (raport)
+npm run check:strict  # kończy się kodem != 0 przy brakach (bramka CI)
+npm test              # 20 testów: słowniki, bundle, drift, integracja z LocaleRuntime
+npm run drift -- --old a.json --new b.json   # porównuje dwa korpusy
+npm run verify        # fetch:runtime + build + check:strict + test (z wymuszonym LocaleRuntime)
 ```
 
-Checker wykrywa:
+`npm run verify` to pełna bramka wydania — uruchamia dokładnie to, co CI, i
+wymusza wykonanie testu integracyjnego. Sam `npm test` jest wygodniejszy lokalnie:
+jeśli nie znajdzie oficjalnego pakietu locale, pominie tylko test integracyjny.
+W CI ustawione jest `DSH_REQUIRE_LOCALE_RUNTIME=1`, więc brak runtime’u **kończy
+się błędem, a nie pominięciem**.
+
+Checker (`check.mjs`) wykrywa:
 
 - brakujące namespace’y i klucze względem angielskiego źródła,
 - klucze nadmiarowe / nieistniejące w źródle,
@@ -89,9 +97,20 @@ Checker wykrywa:
   `upstream/identical-allowlist.json`),
 - brakujące rodzeństwo w parach liczby mnogiej.
 
-Nie musisz mieć zainstalowanego DSH, żeby uruchomić `check` i `test` — korpus
-angielski jest wersjonowany w `upstream/corpus.json`, a test integracyjny
-pomija się, gdy nie znajdzie oficjalnego pakietu locale.
+Wykrywanie zmian upstream (`scripts/lib/corpus-diff.mjs`, `scripts/drift.mjs`)
+porównuje dwa korpusy i raportuje:
+
+- nowe i usunięte namespace’y,
+- nowe i usunięte klucze,
+- **zmiany treści istniejących angielskich stringów** — oznaczane jako
+  `UPSTREAM STRING CHANGED — REVIEW REQUIRED` (klucz nadal się rozwiązuje, ale
+  polskie tłumaczenie trzeba zweryfikować ręcznie),
+- zmiany zestawu placeholderów (`{count}` → `{total}`).
+
+Do uruchomienia `check` i testów driftu nie potrzebujesz DSH ani sieci — korpus
+angielski jest wersjonowany w `upstream/corpus.json`, a testy driftu działają na
+lokalnych fixture’ach z `tests/fixtures/`. Tylko test integracyjny wymaga
+pobrania `@deepseek-ai/dsh-client-locale`.
 
 ## Zgłaszanie błędów tłumaczenia
 
@@ -117,10 +136,15 @@ cordis.patch.yml      warstwa profilu: montuje plugin jako wiersz loadera
 scripts/extract.mjs   wyciąga korpus angielski ze źródeł DSH
 scripts/build.mjs     składa lib/client.js ze słowników
 scripts/check.mjs     kontrola zgodności i kompletności
-scripts/update-upstream.mjs  odświeża korpus z wybranego tagu DSH
+scripts/lib/corpus-diff.mjs  porównanie dwóch korpusów (czysta funkcja)
+scripts/drift.mjs     CLI: raport zmian między dwoma korpusami
+scripts/update-upstream.mjs  odświeża korpus z wybranego tagu DSH i raportuje drift
+scripts/fetch-locale-runtime.mjs  instaluje oficjalny pakiet locale do testów
+scripts/verify.mjs    pełna bramka: runtime + build + check:strict + testy
 upstream/corpus.json  angielskie źródło (klucz → {en, zh})
 upstream/reference.json  z jakiego tagu/commita pochodzi korpus
-tests/                testy jednostkowe i integracyjne
+tests/                testy jednostkowe, driftu i integracyjne
+tests/fixtures/       lokalne fixture’y korpusów dla testów driftu
 docs/publishing.md    wydanie nowej wersji i zgłoszenie do ekosystemu DSH
 GLOSSARY.md           kontrakt terminologiczny
 ```
@@ -130,25 +154,30 @@ GLOSSARY.md           kontrakt terminologiczny
 Gdy DSH doda nowe ciągi:
 
 ```bash
-# 1. odśwież angielskie źródło z nowego tagu
-node scripts/update-upstream.mjs --ref dsh-v0.1.5-rc.2
+# 1. odśwież angielskie źródło z nowego tagu i zobacz raport dryfu
+node scripts/update-upstream.mjs --ref dsh-v0.1.5-rc.2 --fail-on-drift
+#    raport trafia też do upstream/drift-report.md
 
 # 2. sprawdź, czego brakuje
 npm run check
 
 # 3. przetłumacz nowe klucze w dict/pl/<namespace>.json
 #    (dodaj też nowe namespace’y; wzoruj się na GLOSSARY.md)
+#    dla wpisów UPSTREAM STRING CHANGED — zweryfikuj istniejące tłumaczenie
 
-# 4. zbuduj i przetestuj
-npm run build && npm run check:strict && npm test
+# 4. zbuduj i przetestuj pełną bramką
+npm run verify
 
 # 5. wydaj wersję
 #    zaktualizuj CHANGELOG.md, podnieś version w package.json, commit, tag, push
 ```
 
-CI (GitHub Actions) uruchamia `build`, `check:strict` i `test` przy każdym pushu
-i pull requeście oraz raz w tygodniu wykrywa zmiany upstream. Nie ma automatycznego
-tłumaczenia — nowe ciągi zawsze przechodzą przez review.
+CI (GitHub Actions) uruchamia przy każdym pushu i pull requeście: `build`, kontrolę
+świeżości `lib/client.js`, `check:strict` oraz testy z **wymuszonym** prawdziwym
+`LocaleRuntime`. Raz w tygodniu osobny job pobiera najnowszy tag DSH, wylicza raport
+dryfu i **kończy się błędem**, gdy upstream dodał, usunął lub zmienił cokolwiek —
+włącznie ze zmianą treści istniejącego angielskiego stringa. Job tylko raportuje:
+nic nie commituje, nie pushuje i nie tłumaczy automatycznie.
 
 ## Bezpieczeństwo i fallback
 
@@ -163,9 +192,9 @@ tłumaczenia — nowe ciągi zawsze przechodzą przez review.
 
 Kilka miejsc w DSH nie przechodzi przez rejestr locale i pozostaje po angielsku:
 
-- **prezenty uprawnień** (`Read Only`, `Workspace Write`, `Full access`) — rdzeń
-  definiuje je bez nazw wyświetlanych; tłumaczy je osobno warstwa pluginowa
-  (patrz uwaga niżej);
+- **nazwy presetów uprawnień** (`Read Only`, `Workspace Write`, `Full access`) —
+  rdzeń definiuje je bez nazw wyświetlanych, więc interfejs pokazuje
+  identyfikatory maszynowe i żaden słownik locale ich nie obejmuje;
 - **nazwy narzędzi** (`Bash`, `Read`, `Write`, `Edit`) w niektórych miejscach to
   identyfikatory techniczne, nie ciągi locale;
 - **treści z modelu** i **ścieżki/identyfikatory** — oczywiście nietłumaczalne.
