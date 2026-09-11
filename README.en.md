@@ -197,6 +197,16 @@ A few DSH surfaces do not go through the locale registry and stay in English:
 > configuration and survives upstream changes; wherever DSH exposes a locale
 > string, the translation applies.
 
+## Community
+
+The pack was announced to the DeepSeek Harness community:
+
+- **GitHub Discussion** (category *Show Your Plugins!*):
+  <https://github.com/deepseek-ai/deepseek-harness/discussions/6365>
+
+Wording feedback is welcome through the
+[issue tracker](https://github.com/Dragonk/dsh-locale-pl/issues) or in that thread.
+
 ## License
 
 MIT — see [LICENSE](LICENSE). Dictionaries and scripts were derived from the public

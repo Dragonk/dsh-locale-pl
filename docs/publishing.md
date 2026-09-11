@@ -38,8 +38,11 @@ przyjmuje zewnętrznych pull requestów**. Wskazane kanały to:
 2. **GitHub Discussion** w kategorii **Show Your Plugins!** w repozytorium
    `deepseek-ai/deepseek-harness`.
 
+**Status: opublikowano.** Wątek v1.0.1:
+<https://github.com/deepseek-ai/deepseek-harness/discussions/6365>
+
 Kategorii nie trzeba tworzyć — już istnieje. Identyfikator GraphQL kategorii to
-`DIC_kwDOT3Tg84DDSUe` (slug: `show-your-plugins`). Jeśli się zmieni, pobierz go
+`DIC_kwDOT3T1g84DDSUe` (slug: `show-your-plugins`). Jeśli się zmieni, pobierz go
 ponownie:
 
 ```bash
@@ -59,13 +62,15 @@ mutation($repo:ID!, $cat:ID!, $title:String!, $body:String!) {
     discussion { url }
   }
 }' -f repo="$(gh api repos/deepseek-ai/deepseek-harness --jq .node_id)" \
-   -f cat=DIC_kwDOT3Tg84DDSUe \
-   -f title="dsh-locale-pl: Polish (pl) language pack for DSH Web" \
+   -f cat=DIC_kwDOT3T1g84DDSUe \
+   -f title="Polish (pl) language pack for DSH Web — dsh-locale-pl" \
    -f body="$(cat docs/discussion-show-your-plugins.md)"
 ```
 
 > Publikacja dyskusji to publiczne działanie w cudzym repozytorium — wykonaj je
-> świadomie i tylko po potwierdzeniu, że treść jest aktualna.
+> świadomie i tylko po potwierdzeniu, że treść jest aktualna. Przy kolejnym
+> ogłoszeniu (np. nowym minor release) dodaj **komentarz w istniejącym wątku**
+> zamiast edytować historyczny tekst.
 
 ## 4. Numery wersji
 

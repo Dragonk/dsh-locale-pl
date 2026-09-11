@@ -204,6 +204,16 @@ Kilka miejsc w DSH nie przechodzi przez rejestr locale i pozostaje po angielsku:
 > przy zmianach upstream; wszędzie tam, gdzie DSH udostępnia ciąg locale, tłumaczenie
 > działa.
 
+## Społeczność
+
+Plugin został ogłoszony w społeczności DeepSeek Harness:
+
+- **GitHub Discussion** (kategoria *Show Your Plugins!*):
+  <https://github.com/deepseek-ai/deepseek-harness/discussions/6365>
+
+Uwagi do tłumaczenia i propozycje lepszego brzmienia zgłaszaj przez
+[issues](https://github.com/Dragonk/dsh-locale-pl/issues) — albo w wątku dyskusji.
+
 ## Licencja
 
 MIT — patrz [LICENSE](LICENSE). Słowniki i skrypty powstały na podstawie publicznego
