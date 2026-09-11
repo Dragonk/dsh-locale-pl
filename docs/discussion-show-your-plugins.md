@@ -1,51 +1,56 @@
-# dsh-locale-pl — polski (pl) pakiet językowy dla DSH Web
+A community language pack that adds **Polish (pl)** to the DSH Web UI. It's a
+regular DSH client plugin: it registers the language through the official locale
+registry (`@deepseek-ai/dsh-client-locale`) via `ctx.locale.addLanguage`, and supplies
+per-namespace dictionaries via `ctx.locale.register`. It does not patch
+`node_modules` or the DeepSeek Harness source.
 
-Cześć! Dzielę się społecznościowym pakietem językowym, który dodaje **Polski (pl)**
-do listy języków w **Settings → General → Language**.
+## Install
 
-- **Repozytorium:** https://github.com/Dragonk/dsh-locale-pl
-- **Instalacja:** `dsh plugin --profile web add github:Dragonk/dsh-locale-pl`
-- **Licencja:** MIT
+```sh
+dsh plugin --profile web add github:Dragonk/dsh-locale-pl
+```
 
-## Co robi
+Restart DSH, then open **Settings → General → Language** and pick **Polski**.
 
-Pakiet to zwykły plugin kliencki DSH. Rejestruje język w oficjalnym rejestrze
-locale (`@deepseek-ai/dsh-client-locale`) przez `ctx.locale.addLanguage` i podłącza
-słowniki per namespace przez `ctx.locale.register`. Nie patchuje `node_modules` ani
-źródeł DeepSeek Harness, a klucze nieobjęte tłumaczeniem spadają do angielskiego
-przez wbudowany łańcuch `pl → en`.
+## Scope
 
-## Zakres
+- **43 namespaces · 1292 strings** — 100% of the audited English corpus.
+- Covers the shell and settings (`settings`, `settings.models`, `settings.plugins`,
+  `settings.agentPreset`, `settings.pluginInventory`), chat and conversation
+  (`chat`, `conversation`), `trajectory`, `workspace`, `subagent`, `workflowRun`,
+  `cordis`, `deliverables`, `approval`, `plan`, `job`, `feedback`, `sidebar`, and
+  the rest.
+- Keys the pack doesn't cover fall back to English automatically (`pl → en`), so a
+  newer DSH never breaks the UI.
 
-- **43 namespace’y**
-- **1292 przetłumaczone ciągi** (100% skontrolowanego korpusu)
-- obejmuje m.in. `chat`, `conversation`, `settings` (w tym `settings.models`,
-  `settings.plugins`, `settings.agentPreset`, `settings.pluginInventory`),
-  `trajectory`, `workspace`, `subagent`, `workflowRun`, `cordis`, `deliverables`,
-  `approval`, `plan`, `job`, `feedback`, `sidebar` i pozostałe.
+## Tests and maintenance
 
-## Zgodność
+- **20/20 tests, 0 skipped** in CI, including an integration test that loads the
+  **real `LocaleRuntime`** and checks that the language registers, switching works,
+  and unknown keys fall back to English.
+- A weekly workflow re-extracts the English corpus from the newest DSH tag and
+  **fails on any drift** — namespaces or keys added or removed, English text changed
+  under an unchanged key, or changed placeholders. It only reports; every
+  translation is reviewed by hand.
+- Tested against **DeepSeek Harness 0.1.5-rc.2**. Requires **Node.js ≥ 22**.
 
-- DeepSeek Harness **0.1.5-rc.2** (tag `dsh-v0.1.5-rc.2`, commit `fb2c4b9`)
-- Node.js ≥ 22
+## Limitations
 
-## Jak to jest utrzymywane
+Some surfaces don't go through the locale registry yet and stay in English:
+permission preset display names (`Read Only`, `Workspace Write`, `Full access`), tool
+names in a few places, and of course model output and file paths. This pack
+deliberately does not restate the permission preset table in the profile, so it
+doesn't duplicate core configuration and survives upstream changes.
 
-Korpus angielski jest wyciągany ze źródeł DSH skryptem `scripts/extract.mjs` i
-wersjonowany w `upstream/corpus.json`. Skrypt `scripts/check.mjs --strict` (bramka
-CI) wykrywa brakujące namespace’y i klucze, klucze nadmiarowe, uszkodzone
-placeholdery oraz wartości nieprzetłumaczone. Testy obejmują test integracyjny z
-prawdziwym `LocaleRuntime`, który sprawdza, że „Polski” trafia do katalogu języków,
-przełączanie działa, a nieznane klucze spadają do angielskiego.
+## Links
 
-Procedura aktualizacji jest opisana w README: odświeżenie korpusu → `check` →
-tłumaczenie nowych kluczy → testy → release. Nie ma automatycznych tłumaczeń.
+- Repository: https://github.com/Dragonk/dsh-locale-pl
+- Release v1.0.1: https://github.com/Dragonk/dsh-locale-pl/releases/tag/v1.0.1
 
-## Ograniczenia
+Wording feedback and translation bugs are welcome — please open an issue:
+https://github.com/Dragonk/dsh-locale-pl/issues
 
-Kilka miejsc w DSH nie przechodzi przez rejestr locale (m.in. część nazw presetów
-uprawnień i nazwy narzędzi w niektórych powierzchniach), więc pozostają po angielsku.
-Ten pakiet celowo nie nadpisuje tabeli presetów uprawnień w profilu — dzięki temu nie
-dubluje konfiguracji rdzenia i przetrwa zmiany upstream.
-
-Chętnie przyjmę uwagi do tłumaczenia — issues w repozytorium są otwarte.
+Two things I'd be glad to hear from Polish-speaking users: does any technical term
+feel off (I kept `prompt`, `token`, `plugin`, `provider`, and `workflow` in English
+where a Polish equivalent would read forced), and are there surfaces still showing
+English that I missed?
