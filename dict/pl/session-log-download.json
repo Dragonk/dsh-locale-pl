@@ -7,5 +7,6 @@
   "dialog.successDescription": "Przeglądarka pobiera plik ZIP sesji.",
   "dialog.successTitle": "Rozpoczęto pobieranie sesji",
   "header.more": "Więcej działań",
-  "menu.download": "Pobierz dziennik sesji"
+  "menu.download": "Pobierz dziennik sesji",
+  "menu.feedback": "Opinia"
 }

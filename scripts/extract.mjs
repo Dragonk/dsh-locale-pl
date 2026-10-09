@@ -293,7 +293,13 @@ async function evalObjectLiteral(objText, ctx, depth) {
   const inside = objText.slice(1, -1)
   const out = {}
   for (const part of splitTopLevel(inside)) {
-    if (part.startsWith('...')) throw new Error(`spread in object literal unsupported: ${truncate(part, 60)}`)
+    if (part.startsWith('...')) {
+      // `...guideEn`: spread a dictionary built in another constant or module.
+      const spread = await evalExpr(part.slice(3), ctx, depth + 1)
+      if (spread === null || typeof spread !== 'object' || Array.isArray(spread)) throw new Error(`spread of a non-object in object literal: ${truncate(part, 60)}`)
+      Object.assign(out, spread)
+      continue
+    }
     let key
     let valueText
     let m

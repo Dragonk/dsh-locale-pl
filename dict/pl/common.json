@@ -1,8 +1,11 @@
 {
   "back": "Wstecz",
-  "brand.localBuild": "DSH — kompilacja lokalna",
+  "brand.localBuild": "DSH (kompilacja lokalna)",
   "cancel": "Anuluj",
   "close": "Zamknij",
+  "codeBlock.title": "Blok kodu",
+  "codeBlock.unwrap": "Nie zawijaj wierszy",
+  "codeBlock.wrap": "Zawijaj wiersze",
   "collapse": "Zwiń",
   "copied": "Skopiowano",
   "copy": "Kopiuj",
@@ -16,8 +19,6 @@
   "delete": "Usuń",
   "edit": "Edytuj",
   "expand": "Rozwiń",
-  "json.collapseNode": "Zwiń węzeł JSON",
-  "json.expandNode": "Rozwiń węzeł JSON",
   "json.label": "JSON",
   "load.failed": "Nie udało się wczytać",
   "loading": "Wczytywanie…",
@@ -37,5 +38,6 @@
   "submit": "Wyślij",
   "submitting": "Wysyłanie…",
   "truncated": "Obcięto",
-  "unknown": "Nieznane"
+  "unknown": "Nieznane",
+  "workspace.defaultName": "Domyślny obszar roboczy"
 }

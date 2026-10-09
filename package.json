@@ -1,7 +1,7 @@
 {
   "name": "dsh-locale-pl",
-  "version": "1.0.1",
-  "description": "Polish (Polski) language pack for the DeepSeek Harness web UI — a community DSH client plugin that adds pl to Settings → General → Language.",
+  "version": "1.2.0",
+  "description": "Polish (Polski) language pack for the DeepSeek Harness web UI, a community DSH client plugin that adds pl to Settings → General → Language.",
   "keywords": [
     "deepseek-harness",
     "dsh",
@@ -30,6 +30,9 @@
   "files": [
     "index.js",
     "lib/client.js",
+    "lib/desktop.js",
+    "scripts/patch-desktop.mjs",
+    "desktop",
     "cordis.patch.yml",
     "dict",
     "README.md",
@@ -48,6 +51,7 @@
     "check:strict": "node scripts/check.mjs --strict",
     "drift": "node scripts/drift.mjs",
     "fetch:runtime": "node scripts/fetch-locale-runtime.mjs",
+    "patch:desktop": "node scripts/patch-desktop.mjs",
     "extract": "node scripts/extract.mjs",
     "update:upstream": "node scripts/update-upstream.mjs",
     "test": "node --test",

@@ -5,6 +5,72 @@ Wszystkie istotne zmiany w tym pakiecie są opisane w tym pliku.
 Format oparty na [Keep a Changelog](https://keepachangelog.com/pl/1.1.0/),
 wersjonowanie zgodne z [Semantic Versioning](https://semver.org/lang/pl/).
 
+## [1.2.0] (2026-10-06)
+
+### Zmienione
+
+- Korpus zaktualizowany do DSH 0.2.0-rc.2 (tag `dsh-v0.2.0-rc.2`, `639ed01`):
+  57 przestrzeni nazw, 2574 napisy. Dotłumaczone 44 nowe napisy (nowe okno pytań
+  agenta z odliczaniem, wyszukiwarka modeli, ustawienie wysyłania logu sesji
+  `settings.sessionLog`, podpowiedzi instalacji pluginów), 26 przetłumaczonych od
+  nowa po zmianie angielskiego tekstu (aktualizacje aplikacji, widok programisty,
+  powitanie wersji 0.2, wyszukiwanie przez konto DeepSeek), 15 kluczy usuniętych
+  z upstream wypadło ze słowników. Razem 58 przestrzeni nazw, 2614 napisów.
+
+### Naprawione
+
+- `extract.mjs` rozwija `...obiekt` w literałach słowników. Bez tego cała strona
+  Presety agenta (`settings.agentPreset`, 41 napisów, w tym nazwa trybu w nagłówku
+  rozmowy) wypadała z korpusu 0.2 i wyświetlała się po angielsku.
+
+### Dodane
+
+- Pasek menu w tytule okna aplikacji desktopowej na Windows: „Aplikacja”, „Edycja”.
+  Powłoka zna tylko en/zh i nadpisuje napisy przy każdej zmianie języka albo motywu,
+  więc pakiet pilnuje ich obserwatorem, gdy dokument ma `lang="pl"`.
+
+- `scripts/patch-desktop.mjs` (`npm run patch:desktop`): polski dla powłoki desktopowej
+  na Windows, której słownik (165 napisów, `desktop/pl.json`) leży w `app.asar` poza
+  rejestrem locale: rozwijane menu Aplikacja i Edycja, okna aktualizacji i zamykania,
+  zasobnik, okno powitalne. Łata `lib/main.js`, `lib/preload-app.cjs`
+  i `lib/preload-welcome.cjs`, odbudowuje archiwum z nowymi sumami kontrolnymi,
+  zostawia kopię `app.asar.dsh-locale-pl.bak` (`--restore` ją przywraca, `--check`
+  niczego nie zapisuje). Wymaga zamkniętego DSH.
+
+- Automatyczne przywracanie po aktualizacji DSH: host wtyczki (`index.js`,
+  `lib/desktop.js`) przy starcie sprawdza znacznik łatki w `lib/main.js` archiwum;
+  gdy go brak, uruchamia odłączony proces `patch-desktop.mjs --wait-for-exit`
+  (systemowy Node, nigdy ten z katalogu instalacji, żeby nie blokować aktualizacji),
+  który łata po zamknięciu DSH i instalatora aktualizacji. Polskie menu wraca od
+  kolejnego uruchomienia. Log: `%LOCALAPPDATA%\dsh-locale-pl\patch.log`.
+
+### Znane ograniczenia
+
+- Po aktualizacji pierwsza sesja DSH ma jeszcze angielskie rozwijane menu: Windows nie
+  pozwala podmienić `app.asar`, gdy aplikacja działa. Gdy powłoka zmieni kod wyboru
+  języka, łatka przerwie bez zapisu (wpis w logu) i trzeba dostosować `lib/desktop.js`.
+- Jednostki czasu w czacie jako `godz.`, `min`, `sek.` (DSH 0.2 składa czas
+  z osobnych jednostek zamiast gotowych zdań).
+
+## [1.1.0] (2026-09-28)
+
+### Zmienione
+
+- Korpus zaktualizowany do DSH 0.1.7-rc.2 (tag `dsh-v0.1.7-rc.2`, `477b4f4`):
+  57 przestrzeni nazw, 2587 napisów (było 43 i 1292). Dotłumaczone 1438 nowych
+  napisów, 38 przetłumaczonych od nowa po zmianie angielskiego tekstu, 142 klucze
+  usunięte z upstream wypadły ze słowników.
+- Spójny termin „wiersz” (tekst, kod, wyjście), formy liczebnikowe neutralne
+  wobec liczby, bez długich myślników.
+- `sidebarExcel.language` zostaje `en`: fortune-sheet 1.0.4 nie ma polskiej
+  lokalizacji. `time.locale` = `pl` (trafia do `Intl.DateTimeFormat`).
+
+### Naprawione
+
+- `check.mjs` i test pokrycia pomijają klucze z pustym tekstem angielskim.
+- `fetch-locale-runtime.mjs` uruchamia `npm.cmd` przez powłokę na Windows
+  (Node odmawia uruchomienia `.cmd` bez niej od CVE-2024-27980).
+
 ## [1.0.1] — 2026-09-11
 
 ### Naprawione

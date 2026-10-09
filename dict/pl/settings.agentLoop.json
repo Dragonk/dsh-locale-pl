@@ -1,0 +1,14 @@
+{
+  "description": "Sposób, w jaki agent rozdziela wywołania narzędzi.",
+  "invalidNumber": "Wpisz liczbę lub pozostaw puste, aby użyć wartości domyślnej.",
+  "maxParallel": "Równoległe wywołania narzędzi",
+  "maxParallelHint": "Górny limit liczby bezpiecznych równolegle wywołań wykonywanych jednocześnie w jednym kroku.",
+  "overridden": "Nadpisane",
+  "readOnly": "To wdrożenie przechowuje ustawienia tylko do odczytu.",
+  "reset": "Przywróć domyślne",
+  "save": "Zapisz",
+  "saveFailed": "Wdrożenie nie przyjęło tych wartości; pozostawiono je do poprawienia.",
+  "saving": "Zapisywanie…",
+  "title": "Pętla agenta",
+  "unavailable": "Ten plugin nie jest wczytany, więc nie można go teraz skonfigurować."
+}

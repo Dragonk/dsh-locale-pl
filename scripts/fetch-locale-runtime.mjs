@@ -72,7 +72,9 @@ const result = spawnSync(
     '--legacy-peer-deps',
     spec,
   ],
-  { cwd: PROJECT_ROOT, stdio: quiet ? ['ignore', 'pipe', 'pipe'] : 'inherit' },
+  // Node refuses to spawn a .cmd without a shell since CVE-2024-27980 (status null, EINVAL);
+  // every argument here is a constant or the pinned spec from reference.json.
+  { cwd: PROJECT_ROOT, stdio: quiet ? ['ignore', 'pipe', 'pipe'] : 'inherit', shell: process.platform === 'win32' },
 )
 
 if (result.status !== 0) {
