@@ -6,7 +6,6 @@
   "condition": "Wyłączony, gdy",
   "conditionalTag": "Warunkowy",
   "configuration": "Konfiguracja",
-  "countUnit": "pluginów",
   "disabledTag": "Wyłączony",
   "empty": "Brak dostępnych pluginów.",
   "emptySearch": "Brak pasujących pluginów.",
@@ -14,7 +13,6 @@
   "enabledTag": "Włączony",
   "error": "Pluginy są tymczasowo niedostępne.",
   "failed": "Nie udało się uruchomić",
-  "failedCountLabel": "nieudane",
   "failedTag": "Nieudany",
   "fromPreset": "Z",
   "globalSubtitle": "Współdzielone przez system i każdą sesję",
@@ -37,6 +35,5 @@
   "switcherLabel": "Wybierz preset agenta do sprawdzenia",
   "tab": "Lista pluginów",
   "unloading": "Wyładowywanie",
-  "unobserved": "Nie działa",
-  "viewInPreset": "Pokaż w grupie presetów"
+  "unobserved": "Nie działa"
 }

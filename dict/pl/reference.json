@@ -1,6 +1,10 @@
 {
   "candidate.noCwd": "(brak katalogu roboczego)",
   "crumb.root": "Obszar roboczy",
+  "fileOpen.close": "Zamknij",
+  "fileOpen.failed": "Nie udało się otworzyć „{path}”. Spróbuj ponownie albo zamknij ten komunikat.",
+  "fileOpen.retry": "Ponów",
+  "fileOpen.title": "Nie udało się otworzyć pliku",
   "section.files": "Pliki i foldery",
   "section.sessions": "Sesje",
   "section.subagents": "Podagenci",

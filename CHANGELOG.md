@@ -5,6 +5,23 @@ Wszystkie istotne zmiany w tym pakiecie są opisane w tym pliku.
 Format oparty na [Keep a Changelog](https://keepachangelog.com/pl/1.1.0/),
 wersjonowanie zgodne z [Semantic Versioning](https://semver.org/lang/pl/).
 
+## [1.3.0] (2026-10-20)
+
+### Zmienione
+
+- Korpus zaktualizowany do DSH 0.2.1-rc.2 (tag `dsh-v0.2.1-rc.2`, `687f282`):
+  65 przestrzeni nazw, 2910 napisów. Dotłumaczone 308 nowych napisów, w tym siedem nowych
+  przestrzeni nazw: sklep z pluginami (`pluginMarket`, zakładka Odkrywaj), inspektor logu
+  sesji (`session-inspector`), tłumaczenie rozumowania (`cotTranslation`), panel inspektora
+  NodeJS (`inspectorPanel`), maskowanie sekretów (`secretMask`), mody Claude Code
+  (`claude-code-mods`) i etykieta modelu (`deepseek-model-label-1017`). Do tego czcionki
+  kodu i terminala w ustawieniach motywu, poziomy rozumowania własnych modeli, nowe
+  ustawienia wyszukiwania (Search / Fetch API), wybór mikrofonu w dyktowaniu i komunikat
+  o zmianie wersji usługi. 14 napisów przetłumaczonych od nowa po zmianie angielskiego
+  tekstu, 13 kluczy usuniętych z upstream wypadło ze słowników.
+- Lista napisów celowo identycznych z angielskim: dodane nazwy usług, adresy URL i sam
+  format wpisu sklepu; usunięte dwa wpisy, których angielski tekst się zmienił.
+
 ## [1.2.0] (2026-10-06)
 
 ### Zmienione

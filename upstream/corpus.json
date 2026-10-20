@@ -244,10 +244,6 @@
       "en": "… truncated, {total} characters total",
       "zh": "… 已截断，共 {total} 字符"
     },
-    "message.accountStopped": {
-      "en": "Task stopped",
-      "zh": "任务已停止"
-    },
     "message.branch": {
       "en": "Branch into a new conversation",
       "zh": "在新对话中分支"
@@ -343,6 +339,10 @@
     "message.failure.auth": {
       "en": "API key is invalid",
       "zh": "API 密钥无效"
+    },
+    "message.failure.interrupted": {
+      "en": "The DSH process exited before this turn finished (for example, it was killed, crashed, or timed out while shutting down), so the turn was closed when DSH restarted. Unfinished tool calls have unknown outcomes.",
+      "zh": "DSH 进程在本轮完成前退出（例如被强制结束、崩溃或关闭超时），重新启动后本轮已中止。未完成的工具调用结果未知。"
     },
     "message.failure.quota": {
       "en": "Request quota exhausted.",
@@ -584,6 +584,10 @@
       "en": "System prompt update",
       "zh": "系统提示词更新"
     },
+    "message.taskStopped": {
+      "en": "Task stopped",
+      "zh": "任务已停止"
+    },
     "message.think": {
       "en": "Think",
       "zh": "思考"
@@ -776,6 +780,22 @@
       "en": "Running",
       "zh": "运行中"
     },
+    "settings.collapse.completion": {
+      "en": "On completion",
+      "zh": "回答结束后"
+    },
+    "settings.collapse.description": {
+      "en": "Choose when to automatically collapse work details",
+      "zh": "选择何时自动收起工作步骤"
+    },
+    "settings.collapse.nextInput": {
+      "en": "On next message",
+      "zh": "下次有新消息时"
+    },
+    "settings.collapse.title": {
+      "en": "When to Collapse Work Details",
+      "zh": "工作步骤收起时机"
+    },
     "settings.links.description": {
       "en": "Choose where to open web links",
       "zh": "对话中网页链接的打开位置"
@@ -867,6 +887,24 @@
     "view.chat": {
       "en": "Chat",
       "zh": "对话"
+    }
+  },
+  "claude-code-mods": {
+    "band": {
+      "en": "Claude Code mods",
+      "zh": "Claude Code 模组"
+    },
+    "press.failed": {
+      "en": "The button failed: {message}",
+      "zh": "按钮操作失败：{message}"
+    },
+    "press.stale": {
+      "en": "That button belonged to an earlier drawing; the band has refreshed",
+      "zh": "该按钮属于更早的绘制，面板已刷新"
+    },
+    "pressing": {
+      "en": "Working…",
+      "zh": "正在处理…"
     }
   },
   "command": {
@@ -2134,9 +2172,21 @@
       "en": "Showing {shown} of {total} lines",
       "zh": "显示 {shown} / {total} 行"
     },
+    "row.commandArguments": {
+      "en": "Command arguments",
+      "zh": "命令参数"
+    },
     "row.failed": {
       "en": "Failed",
       "zh": "失败"
+    },
+    "row.imageSize": {
+      "en": "{width}x{height}px, {bytes} bytes",
+      "zh": "{width}x{height}px，{bytes} 字节"
+    },
+    "row.imageSizeDownscaled": {
+      "en": "{width}x{height}px (downscaled from {originalWidth}x{originalHeight}px), {bytes} bytes",
+      "zh": "{width}x{height}px（由 {originalWidth}x{originalHeight}px 缩小），{bytes} 字节"
     },
     "row.input": {
       "en": "IN",
@@ -2233,6 +2283,10 @@
     "terminal.collapseAria": {
       "en": "Collapse output",
       "zh": "收起输出"
+    },
+    "terminal.commandLine": {
+      "en": "Command line {n}",
+      "zh": "命令第 {n} 行"
     },
     "terminal.done": {
       "en": "Done",
@@ -2375,8 +2429,8 @@
       "zh": "Auto review 已拒绝"
     },
     "tool.preparing.content": {
-      "en": "Preparing content {kilobytes}KB",
-      "zh": "正在准备内容 {kilobytes}KB"
+      "en": "{kilobytes}KB",
+      "zh": "{kilobytes}KB"
     },
     "tool.title.bash": {
       "en": "Bash",
@@ -2833,6 +2887,142 @@
       "zh": "已有更新"
     }
   },
+  "cotTranslation": {
+    "anonymousNotice": {
+      "en": "Bing and Google need no translation login or API key. Their anonymous endpoints may reject or limit requests.",
+      "zh": "Bing 和 Google 翻译无需额外登录或 API key，但匿名接口可能拒绝或限制请求"
+    },
+    "bing": {
+      "en": "Bing",
+      "zh": "Bing"
+    },
+    "codeTitle": {
+      "en": "Code block",
+      "zh": "代码块"
+    },
+    "copied": {
+      "en": "Copied",
+      "zh": "已复制"
+    },
+    "copy": {
+      "en": "Copy",
+      "zh": "复制"
+    },
+    "deepseekAccount": {
+      "en": "DeepSeek Flash — Account (paid)",
+      "zh": "DeepSeek Flash · 账号（付费）"
+    },
+    "deepseekOfficial": {
+      "en": "DeepSeek Flash — Official API (paid)",
+      "zh": "DeepSeek Flash · 官方 API（付费）"
+    },
+    "failed": {
+      "en": "Translation failed. Showing the original.",
+      "zh": "翻译暂不可用，已显示原文"
+    },
+    "footnotes": {
+      "en": "Footnotes",
+      "zh": "脚注"
+    },
+    "google": {
+      "en": "Google",
+      "zh": "Google"
+    },
+    "invalidLanguage": {
+      "en": "Enter auto or a language code, such as zh, en, or ja.",
+      "zh": "请填写 auto 或语言代码，例如 zh、en、ja"
+    },
+    "invalidProvider": {
+      "en": "Choose a translation service.",
+      "zh": "请选择翻译服务"
+    },
+    "original": {
+      "en": "View original",
+      "zh": "查看原文"
+    },
+    "overridden": {
+      "en": "Overridden",
+      "zh": "已覆盖"
+    },
+    "paidNotice": {
+      "en": "Each uncached fragment sends a separate paid DeepSeek Flash request through the selected account or Official API credentials. Reopening reasoning reuses saved results; changing the provider, language, source text, or request settings may send a new paid request.",
+      "zh": "每个未缓存片段都会通过所选账号或官方 API 凭据单独发送一次付费的 DeepSeek Flash 请求；重新展开会复用已保存的译文，更改服务、语言、原文或请求设置可能发送新的付费请求"
+    },
+    "privacy": {
+      "en": "Expanded reasoning is sent to the selected service. It may contain private code or conversation details.",
+      "zh": "展开的思考内容会发送给所选翻译服务，可能包含私有代码或对话细节。"
+    },
+    "provider": {
+      "en": "Translation service",
+      "zh": "翻译服务"
+    },
+    "providerUnavailable": {
+      "en": "This provider is unavailable. Configure your DeepSeek account or Official API provider, or choose an available service.",
+      "zh": "此服务暂不可用，请配置 DeepSeek 账号或官方 API 服务，或选择可用的翻译服务"
+    },
+    "providerUnavailableOption": {
+      "en": "{provider} — unavailable",
+      "zh": "{provider} — 不可用"
+    },
+    "readOnly": {
+      "en": "This deployment stores settings read-only.",
+      "zh": "本部署的设置为只读"
+    },
+    "reset": {
+      "en": "Reset to default",
+      "zh": "恢复默认"
+    },
+    "retry": {
+      "en": "Retry",
+      "zh": "重试"
+    },
+    "save": {
+      "en": "Save",
+      "zh": "保存"
+    },
+    "saveFailed": {
+      "en": "The deployment did not accept these values; they were left for you to correct.",
+      "zh": "本部署没有接受这些值，已保留供你修改"
+    },
+    "saving": {
+      "en": "Saving…",
+      "zh": "保存中…"
+    },
+    "targetLanguage": {
+      "en": "Target language",
+      "zh": "目标语言"
+    },
+    "targetLanguageHint": {
+      "en": "auto follows the UI language; language codes such as zh, en, and ja also work.",
+      "zh": "auto 使用界面语言；也可填写语言代码，例如 zh、en、ja"
+    },
+    "translating": {
+      "en": "Translating reasoning",
+      "zh": "正在翻译思考内容"
+    },
+    "translation": {
+      "en": "View translation",
+      "zh": "查看译文"
+    },
+    "unavailable": {
+      "en": "Translation preferences are unavailable.",
+      "zh": "翻译设置暂不可用"
+    },
+    "unwrap": {
+      "en": "Unwrap lines",
+      "zh": "不换行"
+    },
+    "wrap": {
+      "en": "Wrap lines",
+      "zh": "自动换行"
+    }
+  },
+  "deepseek-model-label-1017": {
+    "badge.label": {
+      "en": "1017",
+      "zh": "1017"
+    }
+  },
   "deliverables": {
     "changes.added": {
       "en": "+{count}",
@@ -3286,7 +3476,7 @@
     },
     "phase.active.disarmed": {
       "en": "Inactive Goal",
-      "zh": "未运行的目标"
+      "zh": "已暂停的目标"
     },
     "phase.blocked": {
       "en": "Blocked Goal",
@@ -3295,6 +3485,28 @@
     "phase.paused": {
       "en": "Paused Goal",
       "zh": "已暂停的目标"
+    }
+  },
+  "inspectorPanel": {
+    "close": {
+      "en": "Collapse",
+      "zh": "收起"
+    },
+    "frameTitle": {
+      "en": "NodeJS Inspector",
+      "zh": "NodeJS 诊断"
+    },
+    "resize": {
+      "en": "Resize NodeJS Inspector panel",
+      "zh": "调整 NodeJS 诊断面板高度"
+    },
+    "title": {
+      "en": "NodeJS Inspector",
+      "zh": "NodeJS 诊断"
+    },
+    "toggle": {
+      "en": "Toggle NodeJS Inspector",
+      "zh": "展开或收起 NodeJS 诊断"
     }
   },
   "job": {
@@ -3410,6 +3622,10 @@
       "en": "Collapse output",
       "zh": "收起输出"
     },
+    "terminal.commandLine": {
+      "en": "Command line {n}",
+      "zh": "命令第 {n} 行"
+    },
     "terminal.copied": {
       "en": "Copied",
       "zh": "已复制"
@@ -3478,7 +3694,7 @@
     },
     "empty.models": {
       "en": "No models available.",
-      "zh": "没有可用的模型。"
+      "zh": "暂无可用模型"
     },
     "error.action": {
       "en": "Model operation failed: {message}",
@@ -3742,15 +3958,15 @@
     },
     "auto.confirm.description": {
       "en": "Auto review runs without a sandbox. Before every native tool call and PTC inner call, the same model as the current agent reviews whether to allow it; you approve or reject each call it denies. This feature is experimental, can falsely allow or deny actions, and uses additional tokens.",
-      "zh": "Auto review 不使用沙箱。每次原生工具调用和 PTC 内层调用前，都会由与当前 agent 相同的模型进行审查；审查拒绝的调用由你批准或拒绝。此功能仍属实验性，可能误放行或误拒绝，并会消耗额外 token。"
+      "zh": "自动审查不使用沙箱。每次原生工具调用和 PTC 内层调用前，都会由与当前 agent 相同的模型进行审查；审查拒绝的调用由你批准或拒绝。此功能仍属实验性，可能误放行或误拒绝，并会消耗额外 token。"
     },
     "auto.confirm.enable": {
       "en": "Enable Auto review",
-      "zh": "启用 Auto review"
+      "zh": "启用自动审查"
     },
     "auto.confirm.title": {
       "en": "Enable Auto review (experimental)?",
-      "zh": "确认启用 Auto review（实验）？"
+      "zh": "确认启用自动审查（实验）？"
     },
     "auto.description": {
       "en": "Run without a sandbox after an experimental same-model review of every native tool call and PTC inner call.",
@@ -3758,7 +3974,7 @@
     },
     "auto.label": {
       "en": "Auto review",
-      "zh": "Auto review"
+      "zh": "自动审查"
     },
     "close": {
       "en": "Close",
@@ -3878,19 +4094,27 @@
     },
     "backToList": {
       "en": "Back to plugins",
-      "zh": "返回插件列表"
+      "zh": "返回插件"
     },
     "backToPackage": {
       "en": "Back to {name}",
       "zh": "返回 {name}"
     },
+    "basicTitle": {
+      "en": "Built-in plugin settings",
+      "zh": "内置插件配置"
+    },
     "bundlesTitle": {
-      "en": "Installed",
-      "zh": "已安装"
+      "en": "Installed plugins",
+      "zh": "已安装插件"
     },
     "cancel": {
       "en": "Cancel",
       "zh": "取消"
+    },
+    "chooseAddMethod": {
+      "en": "Choose how to add a plugin",
+      "zh": "选择添加插件方式"
     },
     "close": {
       "en": "Close",
@@ -3914,7 +4138,7 @@
     },
     "crumbRoot": {
       "en": "Plugins",
-      "zh": "插件列表"
+      "zh": "插件"
     },
     "empty": {
       "en": "No plugins are installed yet.",
@@ -3927,6 +4151,10 @@
     "error": {
       "en": "Could not read all plugins, possibly due to a network problem",
       "zh": "可能由于网络问题，无法读取全部插件"
+    },
+    "extensionsTitle": {
+      "en": "Experimental plugins",
+      "zh": "实验性插件"
     },
     "failedDisable": {
       "en": "Could not disable: {reason}",
@@ -4056,6 +4284,14 @@
       "en": "Cancel install and close",
       "zh": "取消安装并关闭"
     },
+    "installConfirmedRefused": {
+      "en": "This plugin cannot be installed",
+      "zh": "无法安装此插件"
+    },
+    "installConfirmedTitle": {
+      "en": "Install plugin",
+      "zh": "安装插件"
+    },
     "installDescription": {
       "en": "Enter the plugin's package name, GitHub repository address, or local directory path.",
       "zh": "输入插件的包名、GitHub 仓库地址或本地目录路径。"
@@ -4076,9 +4312,13 @@
       "en": "Install finished with no new dependency.",
       "zh": "安装完成，没有新增依赖。"
     },
+    "installDoneOtherVersion": {
+      "en": "Under pnpm's supply-chain security policy (minimumReleaseAge), versions published more recently than the required age are not installed automatically, so this installation used {installed} instead of the latest version {version}. A newly published version has not completed this waiting period and may contain undetected malicious code or defects. If you need {version}, uninstall the current version and then install {exact} to request that version.",
+      "zh": "根据 pnpm 供应链安全策略（minimumReleaseAge），发布时间未满规定时长的版本不会被自动安装，因此本次安装的是 {installed}，而非最新版本 {version}。新发布的版本尚未经过该观察期，可能存在未被发现的恶意代码或缺陷。如确需使用 {version}，请先卸载当前版本，再安装 {exact} 以指定该版本。"
+    },
     "installDoneRestart": {
-      "en": "Installed; it loads at the next start.",
-      "zh": "已安装，下次启动后加载。"
+      "en": "Installed; restart DSH to load it. {reason}",
+      "zh": "已安装，请重启 DSH 加载它。{reason}"
     },
     "installEdit": {
       "en": "Edit",
@@ -4091,6 +4331,14 @@
     "installEnableNow": {
       "en": "Enable now",
       "zh": "立即启用"
+    },
+    "installExisting": {
+      "en": "Install a third-party plugin",
+      "zh": "安装第三方插件"
+    },
+    "installExistingDescription": {
+      "en": "Supports npm packages, Git repositories, and local directories",
+      "zh": "支持 npm 包、Git 仓库和本地目录"
     },
     "installFailedTitle": {
       "en": "The plugin could not be installed",
@@ -4309,8 +4557,8 @@
       "zh": "未能获取安装结果"
     },
     "installUpgradeNotice": {
-      "en": "Installed plugins do not update automatically yet. To upgrade a plugin, uninstall it and install the new version. Later releases will keep improving the upgrade experience.",
-      "zh": "插件安装后，暂不支持自动更新。若需升级，请先卸载再安装新版，后续版本会持续改善升级体验。"
+      "en": "On-demand Official plugins offer Update when their version differs from DSH. To update other plugins, uninstall and reinstall them.",
+      "zh": "按需安装的官方插件会在版本与 DSH 不同时提供“更新”。其他插件请先卸载再安装新版。"
     },
     "installUseGithubMirror": {
       "en": "Use mainland China mirror",
@@ -4323,6 +4571,10 @@
     "installViewTask": {
       "en": "View installation",
       "zh": "查看安装任务"
+    },
+    "installedTab": {
+      "en": "Installed",
+      "zh": "已安装"
     },
     "installedTitle": {
       "en": "Installed",
@@ -4344,9 +4596,13 @@
       "en": "Package metadata error: {error}",
       "zh": "包元信息错误：{error}"
     },
-    "officialTitle": {
-      "en": "Official",
-      "zh": "官方"
+    "moreAction": {
+      "en": "More",
+      "zh": "更多"
+    },
+    "moreTitle": {
+      "en": "Experimental plugins",
+      "zh": "实验性插件"
     },
     "openDetail": {
       "en": "View {name}",
@@ -4400,6 +4656,18 @@
       "en": "Components",
       "zh": "包含的组件"
     },
+    "previewAlt": {
+      "en": "{name} feature preview",
+      "zh": "{name}功能预览"
+    },
+    "previewUnavailable": {
+      "en": "Could not display feature preview",
+      "zh": "无法显示功能配图"
+    },
+    "reasonAlreadyInstalled": {
+      "en": "This package is already installed; uninstall it before installing another version.",
+      "zh": "这个包已经安装；要安装其他版本，请先卸载它"
+    },
     "reasonAmbiguousInstall": {
       "en": "Which package was installed cannot be told from the dependency change.",
       "zh": "无法从依赖变更中确定安装了哪一个包"
@@ -4417,8 +4685,8 @@
       "zh": "请卸载后重新安装与当前 DSH 兼容的版本。"
     },
     "reasonIncompatibleVersion": {
-      "en": "{plugin} is incompatible with DSH {runtime} (requires {peers}); running it may cause crashes or data loss.",
-      "zh": "{plugin} 与 DSH {runtime} 不兼容（要求 {peers}），运行它可能导致崩溃或数据丢失。"
+      "en": "{plugin} is incompatible with DSH {runtime} (requires {requirements}); running it may cause crashes or data loss.",
+      "zh": "{plugin} 与 DSH {runtime} 不兼容（要求 {requirements}），运行它可能导致崩溃或数据丢失。"
     },
     "reasonIncompatibleVersionUnnamed": {
       "en": "This plugin is incompatible with the running DSH version; running it may cause crashes or data loss.",
@@ -4513,8 +4781,28 @@
       "zh": "安装源"
     },
     "restartNotice": {
-      "en": "The change takes effect at the next start",
-      "zh": "更改将在下次启动生效"
+      "en": "Restart DSH to apply the change. {reason}",
+      "zh": "请重启 DSH 使更改生效。{reason}"
+    },
+    "restartReasonHostModule": {
+      "en": "The change reaches modules DSH itself loaded.",
+      "zh": "更改涉及 DSH 自身已加载的模块。"
+    },
+    "restartReasonModuleComparison": {
+      "en": "DSH could not compare the loaded plugins with their files.",
+      "zh": "DSH 无法将已加载的插件与磁盘上的文件进行比较。"
+    },
+    "restartReasonNoHmr": {
+      "en": "This profile applies changes only at startup.",
+      "zh": "这个 profile 只在启动时应用更改。"
+    },
+    "restartReasonPackageMoved": {
+      "en": "An installed package now resolves to another directory, or the change replaces a package the DSH installation provides. Uninstall a package before installing it from another location.",
+      "zh": "已安装的插件包解析到了另一个目录，或者更改替换了 DSH 安装自带的包。从其他位置安装前请先卸载。"
+    },
+    "restartReasonUnmanagedPlugin": {
+      "en": "The change reaches a plugin running outside the plugin list.",
+      "zh": "更改涉及一个不受插件列表管理的插件。"
     },
     "retry": {
       "en": "Retry",
@@ -4548,13 +4836,57 @@
       "en": " ",
       "zh": ""
     },
+    "sourceBuiltIn": {
+      "en": "Built in",
+      "zh": "内置"
+    },
+    "sourceNotInstalled": {
+      "en": "Not installed",
+      "zh": "未安装"
+    },
+    "sourceSpec": {
+      "en": "Code source",
+      "zh": "代码来源"
+    },
+    "sourceTargetSpec": {
+      "en": "Source for this DSH",
+      "zh": "当前 DSH 对应来源"
+    },
+    "sourceTargetVersion": {
+      "en": "Version for this DSH",
+      "zh": "当前 DSH 对应版本"
+    },
+    "sourceTitle": {
+      "en": "Source",
+      "zh": "来源信息"
+    },
+    "sourceVersion": {
+      "en": "Current version",
+      "zh": "当前版本"
+    },
     "statusBeta": {
       "en": "Experimental",
       "zh": "实验性"
     },
+    "statusMissingFiles": {
+      "en": "Package unavailable",
+      "zh": "包不可用"
+    },
+    "statusNotInstalled": {
+      "en": "Not installed",
+      "zh": "未安装"
+    },
     "statusProblem": {
       "en": "Problem",
       "zh": "异常"
+    },
+    "statusUpdateAvailable": {
+      "en": "Update available",
+      "zh": "可更新"
+    },
+    "tabsLabel": {
+      "en": "Plugin views",
+      "zh": "插件视图"
     },
     "terminalCollapse": {
       "en": "Collapse",
@@ -4563,6 +4895,10 @@
     "terminalCollapseAria": {
       "en": "Collapse output",
       "zh": "收起输出"
+    },
+    "terminalCommandLine": {
+      "en": "Command line {n}",
+      "zh": "命令第 {n} 行"
     },
     "terminalCopied": {
       "en": "Copied",
@@ -4624,9 +4960,331 @@
       "en": "Uninstall {name}",
       "zh": "卸载 {name}"
     },
+    "update": {
+      "en": "Update",
+      "zh": "更新"
+    },
+    "updateLabel": {
+      "en": "Update {name}",
+      "zh": "更新 {name}"
+    },
     "versionTag": {
       "en": "v{version}",
       "zh": "v{version}"
+    }
+  },
+  "pluginMarket": {
+    "addFirstSource": {
+      "en": "Add index source",
+      "zh": "添加索引源"
+    },
+    "addSource": {
+      "en": "Add",
+      "zh": "添加"
+    },
+    "allCategories": {
+      "en": "All",
+      "zh": "全部"
+    },
+    "backToList": {
+      "en": "Discover",
+      "zh": "发现"
+    },
+    "cancel": {
+      "en": "Cancel",
+      "zh": "取消"
+    },
+    "categoriesLabel": {
+      "en": "Categories",
+      "zh": "分类"
+    },
+    "close": {
+      "en": "Close",
+      "zh": "关闭"
+    },
+    "confirmTitle": {
+      "en": "Install \"{name}\"?",
+      "zh": "安装「{name}」？"
+    },
+    "emptyDescription": {
+      "en": "Add a plugin market index to browse and install its plugins here.",
+      "zh": "添加一个插件市场索引，即可在这里浏览和安装其中的插件"
+    },
+    "emptyIndex": {
+      "en": "This index lists no plugins.",
+      "zh": "此索引没有插件"
+    },
+    "emptyTitle": {
+      "en": "No plugin markets yet",
+      "zh": "还没有插件市场"
+    },
+    "entryMeta": {
+      "en": "{version} · {date}",
+      "zh": "{version} · {date}"
+    },
+    "entryMetaAuthor": {
+      "en": "{version} · {author} · {date}",
+      "zh": "{version} · {author} · {date}"
+    },
+    "exempted": {
+      "en": "This version is not compatible with the running DSH, but you set a compatibility exemption for it.",
+      "zh": "此版本与当前 DSH 不兼容，但你已为它设置了兼容性豁免"
+    },
+    "factAuthor": {
+      "en": "Author",
+      "zh": "作者"
+    },
+    "factCategory": {
+      "en": "Category",
+      "zh": "分类"
+    },
+    "factCommit": {
+      "en": "Commit",
+      "zh": "提交"
+    },
+    "factDirectory": {
+      "en": "Directory",
+      "zh": "目录"
+    },
+    "factHomepage": {
+      "en": "Homepage",
+      "zh": "主页"
+    },
+    "factLabels": {
+      "en": "Labels",
+      "zh": "标签"
+    },
+    "factMarket": {
+      "en": "Plugin market",
+      "zh": "插件市场"
+    },
+    "factPackage": {
+      "en": "Package",
+      "zh": "软件包"
+    },
+    "factPublished": {
+      "en": "Published",
+      "zh": "发布时间"
+    },
+    "factRegistry": {
+      "en": "Registry",
+      "zh": "注册表"
+    },
+    "factRepository": {
+      "en": "Repository",
+      "zh": "仓库"
+    },
+    "factSource": {
+      "en": "Source",
+      "zh": "来源"
+    },
+    "factSourceCode": {
+      "en": "Source code",
+      "zh": "源代码"
+    },
+    "filter": {
+      "en": "Labels",
+      "zh": "标签"
+    },
+    "filterCount": {
+      "en": "Labels · {count}",
+      "zh": "标签 · {count}"
+    },
+    "incompatible": {
+      "en": "This version is not compatible with the running DSH {runtime}; it requires DSH {range}.",
+      "zh": "此版本与当前的 DSH {runtime} 不兼容，它要求 DSH {range}"
+    },
+    "install": {
+      "en": "Install",
+      "zh": "安装"
+    },
+    "installTitle": {
+      "en": "Install {name}",
+      "zh": "安装 {name}"
+    },
+    "installTrust": {
+      "en": "Plugins run on this machine with your permissions. Make sure you trust where this one comes from.",
+      "zh": "插件在本机以你的权限运行。请确认你信任它的来源"
+    },
+    "installVersionTitle": {
+      "en": "Install {name} {version}",
+      "zh": "安装 {name} {version}"
+    },
+    "loading": {
+      "en": "Reading the index",
+      "zh": "正在读取索引"
+    },
+    "manageSources": {
+      "en": "Manage index sources…",
+      "zh": "管理索引源…"
+    },
+    "marketMenu": {
+      "en": "Switch plugin market, currently {market}",
+      "zh": "切换插件市场，当前为 {market}"
+    },
+    "noCompatibleVersion": {
+      "en": "No version is compatible with DSH {runtime}",
+      "zh": "没有与当前 DSH {runtime} 兼容的版本"
+    },
+    "noMatches": {
+      "en": "No plugins match.",
+      "zh": "没有符合条件的插件"
+    },
+    "openEntry": {
+      "en": "View {name}",
+      "zh": "查看 {name}"
+    },
+    "openInstalled": {
+      "en": "View {name} in Installed",
+      "zh": "在已安装中查看 {name}"
+    },
+    "readChanged": {
+      "en": "This index changed while loading.",
+      "zh": "此索引在加载过程中发生了变化"
+    },
+    "readFailed": {
+      "en": "Could not read this index.",
+      "zh": "无法读取此索引"
+    },
+    "readInvalid": {
+      "en": "This index is not in a valid format.",
+      "zh": "此索引的格式无效"
+    },
+    "refresh": {
+      "en": "Refresh",
+      "zh": "刷新"
+    },
+    "removeSource": {
+      "en": "Remove",
+      "zh": "移除"
+    },
+    "removeSourceNamed": {
+      "en": "Remove {url}",
+      "zh": "移除 {url}"
+    },
+    "retry": {
+      "en": "Retry",
+      "zh": "重试"
+    },
+    "search": {
+      "en": "Search plugins",
+      "zh": "搜索插件"
+    },
+    "showMore": {
+      "en": "Show more",
+      "zh": "显示更多"
+    },
+    "sortBy": {
+      "en": "Sort: {sort}",
+      "zh": "排序：{sort}"
+    },
+    "sortDefault": {
+      "en": "Default order",
+      "zh": "默认顺序"
+    },
+    "sortPublished": {
+      "en": "Publish date",
+      "zh": "发布时间"
+    },
+    "sortRelevance": {
+      "en": "Best match",
+      "zh": "最佳匹配"
+    },
+    "sourceDuplicate": {
+      "en": "This index source is already added.",
+      "zh": "已添加过这个索引源"
+    },
+    "sourceFailed": {
+      "en": "Could not save the index sources.",
+      "zh": "无法保存索引源"
+    },
+    "sourceInvalid": {
+      "en": "Use an http or https address without a user name, password, or # fragment.",
+      "zh": "请使用 http 或 https 地址，且不要包含用户名、密码或 # 片段"
+    },
+    "sourcePlaceholder": {
+      "en": "https://example.com/index.json",
+      "zh": "https://example.com/index.json"
+    },
+    "sourceUnavailable": {
+      "en": "Index sources cannot be saved here.",
+      "zh": "当前环境无法保存索引源"
+    },
+    "sourceUrl": {
+      "en": "Index URL",
+      "zh": "索引 URL"
+    },
+    "sourcesDescription": {
+      "en": "A plugin market is published as the URL of one index file. Discover browses the indexes listed here.",
+      "zh": "插件市场以一个索引文件的 URL 提供，「发现」从这里列出的索引浏览插件"
+    },
+    "sourcesFailed": {
+      "en": "Could not read the index sources.",
+      "zh": "无法读取索引源"
+    },
+    "sourcesLabel": {
+      "en": "Added index sources",
+      "zh": "已添加的索引源"
+    },
+    "sourcesTitle": {
+      "en": "Index sources",
+      "zh": "索引源"
+    },
+    "sourcesTrust": {
+      "en": "Indexes come from third parties. Add only sources you trust: their plugins run with your permissions once installed.",
+      "zh": "索引由第三方提供。只添加你信任的来源：其中的插件安装后以你的权限运行"
+    },
+    "statusInstalled": {
+      "en": "Installed",
+      "zh": "已安装"
+    },
+    "statusProvided": {
+      "en": "Provided by DSH",
+      "zh": "随 DSH 提供"
+    },
+    "statusUpdate": {
+      "en": "Update available",
+      "zh": "有新版本"
+    },
+    "switchToAscending": {
+      "en": "Sort ascending",
+      "zh": "改为升序"
+    },
+    "switchToDescending": {
+      "en": "Sort descending",
+      "zh": "改为降序"
+    },
+    "title": {
+      "en": "Discover",
+      "zh": "发现"
+    },
+    "versionDefault": {
+      "en": "Recommended",
+      "zh": "推荐"
+    },
+    "versionExempted": {
+      "en": "Exempted",
+      "zh": "已豁免"
+    },
+    "versionIncompatible": {
+      "en": "Incompatible",
+      "zh": "不兼容"
+    },
+    "versionInstalled": {
+      "en": "Installed",
+      "zh": "当前已安装"
+    },
+    "versionPrerelease": {
+      "en": "Prerelease",
+      "zh": "预发布"
+    },
+    "versionsLabel": {
+      "en": "Versions of {name}",
+      "zh": "{name} 的版本"
+    },
+    "versionsTitle": {
+      "en": "Versions",
+      "zh": "版本"
     }
   },
   "question": {
@@ -4763,6 +5421,22 @@
     "crumb.root": {
       "en": "Workspace",
       "zh": "工作区"
+    },
+    "fileOpen.close": {
+      "en": "Close",
+      "zh": "关闭"
+    },
+    "fileOpen.failed": {
+      "en": "Couldn’t open “{path}”. Try again or close this message.",
+      "zh": "无法打开“{path}”，请重试或关闭此提示"
+    },
+    "fileOpen.retry": {
+      "en": "Retry",
+      "zh": "重试"
+    },
+    "fileOpen.title": {
+      "en": "Couldn’t open file",
+      "zh": "无法打开文件"
     },
     "section.files": {
       "en": "Files & folders",
@@ -5373,7 +6047,7 @@
       "zh": "关联会话 {title}：打开原会话"
     },
     "detail.records": {
-      "en": "Delivery records",
+      "en": "Records",
       "zh": "任务运行记录"
     },
     "detail.rule": {
@@ -5752,6 +6426,10 @@
       "en": "Second",
       "zh": "秒"
     },
+    "timing.subagentSession": {
+      "en": "This session belongs to a sub-agent, which never receives delivered reminders.",
+      "zh": "此会话属于子 agent，永远不会收到投递的提醒"
+    },
     "timing.time": {
       "en": "Time",
       "zh": "时间"
@@ -5831,6 +6509,226 @@
     "unit.second.other": {
       "en": "seconds",
       "zh": "秒"
+    }
+  },
+  "secretMask": {
+    "secret.hide": {
+      "en": "Hide secret",
+      "zh": "隐藏密钥"
+    },
+    "secret.reveal": {
+      "en": "Show secret",
+      "zh": "显示密钥"
+    }
+  },
+  "session-inspector": {
+    "filter.apply": {
+      "en": "Apply filter",
+      "zh": "确认筛选"
+    },
+    "filter.cancel": {
+      "en": "Cancel",
+      "zh": "取消"
+    },
+    "filter.candidates": {
+      "en": "Type suggestions",
+      "zh": "类型候选"
+    },
+    "filter.clear": {
+      "en": "Clear",
+      "zh": "清空"
+    },
+    "filter.context": {
+      "en": "Parent context of a matching record",
+      "zh": "匹配记录的父级上下文"
+    },
+    "filter.failed": {
+      "en": "Type suggestions could not be loaded.",
+      "zh": "无法获取类型候选。"
+    },
+    "filter.help": {
+      "en": "Contains matching (*keyword*). Enter confirms; Esc cancels.",
+      "zh": "默认包含匹配（*关键词*）；Enter 确认，Esc 取消。"
+    },
+    "filter.input": {
+      "en": "Type keyword",
+      "zh": "类型关键词"
+    },
+    "filter.loading": {
+      "en": "Finding suggestions…",
+      "zh": "正在查找候选…"
+    },
+    "filter.noCandidates": {
+      "en": "No suggestions. You can still apply this keyword.",
+      "zh": "没有匹配候选，仍可确认当前关键词。"
+    },
+    "filter.placeholder": {
+      "en": "Type a fragment, e.g. delta",
+      "zh": "输入类型片段，如 delta"
+    },
+    "filter.title": {
+      "en": "Filter types",
+      "zh": "筛选类型"
+    },
+    "object.absent": {
+      "en": "[Empty slot]",
+      "zh": "[空槽]"
+    },
+    "object.accessor": {
+      "en": "[Getter / Setter, not evaluated]",
+      "zh": "[Getter / Setter，未执行]"
+    },
+    "object.empty": {
+      "en": "Empty",
+      "zh": "空"
+    },
+    "object.group": {
+      "en": "Group",
+      "zh": "Group"
+    },
+    "object.groupData": {
+      "en": "Group Data",
+      "zh": "Group Data"
+    },
+    "object.more": {
+      "en": "Show more",
+      "zh": "显示更多"
+    },
+    "object.navigation": {
+      "en": "Raw data navigation",
+      "zh": "原始数据导航"
+    },
+    "object.node": {
+      "en": "Node",
+      "zh": "Node"
+    },
+    "object.nodeData": {
+      "en": "Node Data",
+      "zh": "Node Data"
+    },
+    "object.properties": {
+      "en": "Other properties",
+      "zh": "其他属性"
+    },
+    "object.step": {
+      "en": "Step",
+      "zh": "Step"
+    },
+    "object.stepData": {
+      "en": "Step Data",
+      "zh": "Step Data"
+    },
+    "object.turn": {
+      "en": "Turn",
+      "zh": "Turn"
+    },
+    "object.turnData": {
+      "en": "Turn Data",
+      "zh": "Turn Data"
+    },
+    "picker.cancel": {
+      "en": "Cancel picking (Esc)",
+      "zh": "取消选取 (Esc)"
+    },
+    "picker.instructions": {
+      "en": "Hover in the main Chat to preview, then click to select. Esc cancels.",
+      "zh": "在左侧 Chat 中悬停预览，点击选取；Esc 取消。"
+    },
+    "picker.noChat": {
+      "en": "Open this Session in the main Chat before picking.",
+      "zh": "请先在主区域打开当前 Session 的 Chat。"
+    },
+    "picker.noMatch": {
+      "en": "No matching record in this table. Pick another element or press Esc to cancel.",
+      "zh": "当前表格没有匹配记录，请选择其他元素或按 Esc 取消。"
+    },
+    "picker.pick": {
+      "en": "Pick an element in Chat View",
+      "zh": "在对话面板中选取元素"
+    },
+    "tab.description": {
+      "en": "Analyze raw logs and grouped chat messages for the current session in the sidebar.",
+      "zh": "在侧边栏分析当前会话原始日志和聊天分组数据"
+    },
+    "tab.title": {
+      "en": "Session Log",
+      "zh": "会话数据诊断"
+    },
+    "table.close": {
+      "en": "Close",
+      "zh": "关闭"
+    },
+    "table.collapse": {
+      "en": "Collapse children",
+      "zh": "收起子行"
+    },
+    "table.data": {
+      "en": "Data",
+      "zh": "数据"
+    },
+    "table.empty": {
+      "en": "No records",
+      "zh": "暂无记录"
+    },
+    "table.expand": {
+      "en": "Expand children",
+      "zh": "展开子行"
+    },
+    "table.id": {
+      "en": "Index",
+      "zh": "序号"
+    },
+    "table.latest": {
+      "en": "Follow Latest",
+      "zh": "跟踪最新"
+    },
+    "table.loading": {
+      "en": "Loading…",
+      "zh": "加载中…"
+    },
+    "table.location": {
+      "en": "T/S",
+      "zh": "T/S"
+    },
+    "table.older": {
+      "en": "Load earlier",
+      "zh": "加载更早"
+    },
+    "table.raw": {
+      "en": "Raw data",
+      "zh": "原始数据"
+    },
+    "table.rawError": {
+      "en": "This record could not be serialized. Select another record to continue.",
+      "zh": "无法序列化这条记录，可以选择其他记录继续查看。"
+    },
+    "table.removed": {
+      "en": "This record was removed or settled. Select a current record.",
+      "zh": "该记录已移除或结算，请选择当前记录。"
+    },
+    "table.resizeDetails": {
+      "en": "Resize raw data panel",
+      "zh": "调整原始数据面板高度"
+    },
+    "table.time": {
+      "en": "Time (UTC)",
+      "zh": "时间 (UTC)"
+    },
+    "table.type": {
+      "en": "Type",
+      "zh": "类型"
+    },
+    "view.chatNode": {
+      "en": "Chat Group",
+      "zh": "对话分组"
+    },
+    "view.presentation": {
+      "en": "Presentation",
+      "zh": "展示形式"
+    },
+    "view.sessionLog": {
+      "en": "Raw Log",
+      "zh": "原始数据"
     }
   },
   "session-log-download": {
@@ -5992,6 +6890,34 @@
       "en": "General",
       "zh": "通用设置"
     },
+    "hostRelease.description": {
+      "en": "The service version changed. This page paused live updates; reload to load the new version.",
+      "zh": "服务版本已变化，本页面已暂停热更新，刷新后加载新版本。"
+    },
+    "hostRelease.later": {
+      "en": "Not now",
+      "zh": "暂不刷新"
+    },
+    "hostRelease.page": {
+      "en": "Page",
+      "zh": "页面"
+    },
+    "hostRelease.reload": {
+      "en": "Reload to load the new version",
+      "zh": "刷新以加载新版本"
+    },
+    "hostRelease.service": {
+      "en": "Service",
+      "zh": "服务"
+    },
+    "hostRelease.title": {
+      "en": "Service version changed",
+      "zh": "服务版本变化"
+    },
+    "hostRelease.unknown": {
+      "en": "Unknown",
+      "zh": "未解析"
+    },
     "openDocument": {
       "en": "Open configuration file",
       "zh": "打开配置文件"
@@ -6129,6 +7055,10 @@
     "nav": {
       "en": "Account",
       "zh": "账号与余额"
+    },
+    "noResponse": {
+      "en": "Something went wrong. Please check your network connection and try again.",
+      "zh": "操作未完成，可能是网络异常，请检查你的网络状况后重试"
     },
     "onboardingArtworkLocale": {
       "en": "en",
@@ -6450,6 +7380,26 @@
       "en": "Close",
       "zh": "关闭"
     },
+    "createPlugin": {
+      "en": "Let the agent create a plugin",
+      "zh": "让 Agent 创建插件"
+    },
+    "createPluginChecking": {
+      "en": "Checking whether Creator mode is available",
+      "zh": "正在确认创造模式是否可用"
+    },
+    "createPluginDescription": {
+      "en": "Enter Creator mode and make your own DSH plugin",
+      "zh": "进入创造模式，制作属于你的 DSH 插件"
+    },
+    "createPluginMissing": {
+      "en": "Creator mode is not included in this configuration",
+      "zh": "当前配置未提供创造模式"
+    },
+    "createPluginUnavailable": {
+      "en": "Temporarily unavailable. Reopen this menu to retry",
+      "zh": "暂时不可用，请重新打开菜单重试"
+    },
     "creatorDraft": {
       "en": "Let the agent help me create a preset",
       "zh": "让 Agent 帮我创建预设模式"
@@ -6487,8 +7437,8 @@
       "zh": "脚注"
     },
     "guideMinimalExplanation": {
-      "en": "### What is included\n\nOne persistent shell tool and a fixed system prompt. The built-in preset does not load Skills, planning, context compaction, or the standard runtime context.\n\n### When to choose it\n\nUse it as a baseline for experiments and comparisons. It can still read files and execute scripts through shell commands, but offers fewer built-in ways to manage a long task. Fewer tools does not necessarily make it easier for a beginner.",
-      "zh": "### 保留哪些能力\n\n仅提供一个持久 Shell 工具，并使用固定系统提示词。内置预设不加载 Skills、计划、上下文压缩，也不注入标准运行时上下文。\n\n### 什么时候选\n\n适合作为实验和对照测试的基线。Agent 仍能通过终端命令读写文件、运行脚本，但缺少管理长任务的内置辅助能力。工具少，不代表对新手更容易。"
+      "en": "### What is included\n\nOne persistent shell tool, read_image, and a fixed system prompt. Image reading requires an image-capable model. Older history is compacted automatically under context pressure; use /compact while the agent is idle to compact it manually. The built-in preset does not load Skills, planning, or the standard runtime context.\n\n### When to choose it\n\nUse it as a baseline for experiments and comparisons. It can still read files and execute scripts through shell commands, but offers fewer built-in ways to manage a long task. Fewer tools does not necessarily make it easier for a beginner.",
+      "zh": "### 保留哪些能力\n\n提供持久 Shell 和 read_image 工具，并使用固定系统提示词。读取图片需要支持图片输入的模型。上下文压力达到阈值时自动压缩较早历史；Agent 空闲时可输入 /compact 手动压缩。内置预设不加载 Skills、计划，也不注入标准运行时上下文。\n\n### 什么时候选\n\n适合作为实验和对照测试的基线。Agent 仍能通过终端命令读写文件、运行脚本，但缺少管理长任务的内置辅助能力。工具少，不代表对新手更容易。"
     },
     "guideMinimalIntro": {
       "en": "Choose Minimal mode for a new task. For a comparison, hold the model, permissions, input, and starting workspace state constant across runs.",
@@ -6559,8 +7509,8 @@
       "zh": "创造模式"
     },
     "presetMinimalDescription": {
-      "en": "The agent works using only a terminal tool. Useful for testing and comparing its basic performance.",
-      "zh": "Agent 仅使用终端工具完成任务，适合测试和对比其基础表现。"
+      "en": "The agent uses a terminal and image reading, with context compaction. Useful for testing and comparing its basic performance.",
+      "zh": "Agent 使用终端和图片读取工具，并支持上下文压缩，适合测试和对比其基础表现。"
     },
     "presetMinimalName": {
       "en": "Minimal mode",
@@ -6594,6 +7544,10 @@
       "en": "Set as new task default",
       "zh": "设为新任务默认"
     },
+    "standardUnavailable": {
+      "en": "Standard mode is unavailable. Restore it or choose another available mode.",
+      "zh": "标准模式不可用，请恢复该模式或选择其他可用模式。"
+    },
     "switchRefused": {
       "en": "Could not switch to {name}: {reason}",
       "zh": "无法切换到「{name}」：{reason}"
@@ -6610,6 +7564,10 @@
     }
   },
   "settings.models": {
+    "accountSignedIn": {
+      "en": "Signed in",
+      "zh": "已登录"
+    },
     "add": {
       "en": "Add model provider",
       "zh": "添加模型提供商"
@@ -6658,13 +7616,29 @@
       "en": "Applying…",
       "zh": "保存中…"
     },
+    "authHelp": {
+      "en": "Authentication details",
+      "zh": "认证说明"
+    },
     "baseUrl": {
       "en": "Base URL",
       "zh": "API 地址"
     },
+    "baseUrlConfigured": {
+      "en": "Provider-configured endpoint",
+      "zh": "由提供方配置地址"
+    },
     "baseUrlDefault": {
-      "en": "Provider default",
-      "zh": "提供商默认"
+      "en": "No default endpoint",
+      "zh": "没有默认地址"
+    },
+    "baseUrlEnvironment": {
+      "en": "Provider endpoint configuration: {env}",
+      "zh": "提供方地址配置：{env}"
+    },
+    "baseUrlPlaceholder": {
+      "en": "{url}",
+      "zh": "{url}"
     },
     "cancel": {
       "en": "Cancel",
@@ -6763,8 +7737,8 @@
       "zh": "DeepSeek 账号"
     },
     "deepSeekBaseUrl": {
-      "en": "https://api.deepseek.com/anthropic",
-      "zh": "https://api.deepseek.com/anthropic"
+      "en": "https://api.deepseek.com/anthropic (Default to use DEEPSEEK_BASE_URL)",
+      "zh": "https://api.deepseek.com/anthropic（默认使用环境 DEEPSEEK_BASE_URL）"
     },
     "deepSeekEndpointHint": {
       "en": "Use an API endpoint compatible with Anthropic Messages.",
@@ -6854,9 +7828,29 @@
       "en": "Enter the API key, or leave the field empty if this provider authenticates another way.",
       "zh": "请输入 API 密钥；若该提供商以其他方式鉴权，可以留空。"
     },
-    "keyEnvLocked": {
-      "en": "Provided by the launch environment (read-only)",
-      "zh": "由启动环境提供（只读）"
+    "keyFallbackDetected": {
+      "en": "Env var detected. ({hint})",
+      "zh": "已检测到环境变量（{hint}）"
+    },
+    "keyFallbackDetectedHidden": {
+      "en": "Env var detected.",
+      "zh": "已检测到环境变量"
+    },
+    "keyFallbackMissing": {
+      "en": "Env var not detected. Enter an API key, or configure {hint} in your env.",
+      "zh": "未检测到环境变量。请填写 API 密钥，或设置环境变量 {hint}。"
+    },
+    "keyFallbackUnchecked": {
+      "en": "Environment credential status has not been confirmed.",
+      "zh": "环境凭据状态尚未确认"
+    },
+    "keyHelp": {
+      "en": "Saved credentials are used first. Environment fallbacks shown here, in order: {env}. Sources are launch environment, $cwd/.env, then $DSH_HOME/.env.",
+      "zh": "优先使用已保存的凭据。此处显示的环境后备按以下顺序排列：{env}。来源依次为启动环境、$cwd/.env、$DSH_HOME/.env。"
+    },
+    "keyHide": {
+      "en": "Hide secret",
+      "zh": "隐藏密钥"
     },
     "keyIllegalCharacters": {
       "en": "This API key is not in a valid format. Please check it.",
@@ -6870,17 +7864,21 @@
       "en": "Enter your API key",
       "zh": "输入 API 密钥"
     },
-    "keyPlaceholderNative": {
-      "en": "Enter an API key, or leave blank to use environment authentication",
-      "zh": "输入 API 密钥，或留空使用环境认证"
+    "keyPlaceholderFallback": {
+      "en": "Leave blank to use env as auth ({hint})",
+      "zh": "留空使用环境认证（{hint}）"
+    },
+    "keyPlaceholderSaved": {
+      "en": "Leave blank to use saved credentials",
+      "zh": "留空使用已保存凭据"
     },
     "keyRequired": {
       "en": "Enter an API key to continue.",
       "zh": "请输入 API 密钥后继续。"
     },
-    "keyStored": {
-      "en": "Configured — enter a new value to replace",
-      "zh": "已配置——输入新值可替换"
+    "keyReveal": {
+      "en": "Show secret",
+      "zh": "显示密钥"
     },
     "loadFailed": {
       "en": "Loading the provider directory failed",
@@ -6953,6 +7951,46 @@
     "modelNamePlaceholder": {
       "en": "Uses the model ID when empty",
       "zh": "留空时使用模型 ID"
+    },
+    "modelReasoning": {
+      "en": "Reasoning levels",
+      "zh": "推理等级"
+    },
+    "modelReasoningAdd": {
+      "en": "Add level",
+      "zh": "添加档位"
+    },
+    "modelReasoningHelp": {
+      "en": "About reasoning levels",
+      "zh": "推理等级说明"
+    },
+    "modelReasoningHelpText": {
+      "en": "The API value is sent in the request's reasoning-effort field, such as OpenAI's reasoning_effort. It defaults to the level name; where the model provider's API documentation specifies a different value, follow it. Off turns reasoning off and needs no value; a value already written in the configuration is kept and sent.",
+      "zh": "API 参数值会写入请求的推理强度字段（如 OpenAI 的 reasoning_effort），默认与档位名相同；如有不同，以模型提供商的 API 文档为准。Off 表示关闭思考，不需要填写参数值；配置中已写入的值会保留并发送。"
+    },
+    "modelReasoningLevel": {
+      "en": "Level",
+      "zh": "档位"
+    },
+    "modelReasoningNeedsLevel": {
+      "en": "Add at least one level besides Off, or turn reasoning levels off.",
+      "zh": "至少添加一个 Off 以外的档位；不需要思考请关闭推理等级。"
+    },
+    "modelReasoningOffValuePlaceholder": {
+      "en": "Turns reasoning off",
+      "zh": "关闭思考"
+    },
+    "modelReasoningRemove": {
+      "en": "Delete level",
+      "zh": "删除档位"
+    },
+    "modelReasoningValue": {
+      "en": "API value",
+      "zh": "API 参数值"
+    },
+    "modelReasoningValueRequired": {
+      "en": "Every level besides Off needs an API value, and no value can be empty.",
+      "zh": "Off 以外的档位都需要填写 API 参数值，且参数值不能为空字符串。"
     },
     "models": {
       "en": "Models",
@@ -7142,10 +8180,6 @@
       "en": "Configuration",
       "zh": "配置状态"
     },
-    "countUnit": {
-      "en": "plugins",
-      "zh": "个"
-    },
     "disabledTag": {
       "en": "Disabled",
       "zh": "已停用"
@@ -7173,10 +8207,6 @@
     "failed": {
       "en": "Failed to start",
       "zh": "启动失败"
-    },
-    "failedCountLabel": {
-      "en": "failed",
-      "zh": "个失败"
     },
     "failedTag": {
       "en": "Failed",
@@ -7269,10 +8299,6 @@
     "unobserved": {
       "en": "Not running",
       "zh": "未运行"
-    },
-    "viewInPreset": {
-      "en": "View in the preset group",
-      "zh": "去预设分组查看"
     }
   },
   "settings.plugins": {
@@ -7532,19 +8558,83 @@
       "en": "Appearance",
       "zh": "外观"
     },
-    "fontSize.decrease": {
+    "fontFamily.code.description": {
+      "en": "Used for code blocks, inline code, and tool output. Separate fonts with commas; leave empty for the default",
+      "zh": "用于代码块、行内代码与工具输出。多个字体用逗号分隔，留空使用默认字体"
+    },
+    "fontFamily.code.title": {
+      "en": "Code font",
+      "zh": "代码字体"
+    },
+    "fontFamily.placeholder": {
+      "en": "Default",
+      "zh": "默认"
+    },
+    "fontFamily.terminal.description": {
+      "en": "Used for the sidebar terminal. Separate fonts with commas; leave empty for the default",
+      "zh": "用于侧栏终端。多个字体用逗号分隔，留空使用默认字体"
+    },
+    "fontFamily.terminal.title": {
+      "en": "Terminal font",
+      "zh": "终端字体"
+    },
+    "fontFamily.text.description": {
+      "en": "Used for the interface and conversation text. Separate fonts with commas; leave empty for the default",
+      "zh": "用于界面与会话正文。多个字体用逗号分隔，留空使用默认字体"
+    },
+    "fontFamily.text.title": {
+      "en": "Text font",
+      "zh": "正文字体"
+    },
+    "fontSize.code.decrease": {
+      "en": "Decrease code font size",
+      "zh": "减小代码字号"
+    },
+    "fontSize.code.description": {
+      "en": "Used for code blocks, inline code, and tool output",
+      "zh": "用于代码块、行内代码与工具输出"
+    },
+    "fontSize.code.increase": {
+      "en": "Increase code font size",
+      "zh": "增大代码字号"
+    },
+    "fontSize.code.title": {
+      "en": "Code font size",
+      "zh": "代码字号"
+    },
+    "fontSize.more": {
+      "en": "More font settings",
+      "zh": "更多字体设置"
+    },
+    "fontSize.terminal.decrease": {
+      "en": "Decrease terminal font size",
+      "zh": "减小终端字号"
+    },
+    "fontSize.terminal.description": {
+      "en": "Used for the sidebar terminal",
+      "zh": "用于侧栏终端"
+    },
+    "fontSize.terminal.increase": {
+      "en": "Increase terminal font size",
+      "zh": "增大终端字号"
+    },
+    "fontSize.terminal.title": {
+      "en": "Terminal font size",
+      "zh": "终端字号"
+    },
+    "fontSize.text.decrease": {
       "en": "Decrease font size",
       "zh": "减小字号"
     },
-    "fontSize.description": {
+    "fontSize.text.description": {
       "en": "Only affects conversation content",
       "zh": "仅影响会话内容的字号"
     },
-    "fontSize.increase": {
+    "fontSize.text.increase": {
       "en": "Increase font size",
       "zh": "增大字号"
     },
-    "fontSize.title": {
+    "fontSize.text.title": {
       "en": "Font size",
       "zh": "字号大小"
     },
@@ -7571,16 +8661,28 @@
       "zh": "未配置密钥；仅使用 DeepSeek 账号模型的对话可以通过默认接口地址搜索。"
     },
     "baseUrl": {
-      "en": "Endpoint",
-      "zh": "接口地址"
+      "en": "Messages API base URL",
+      "zh": "Messages API 基础地址"
     },
     "baseUrlHint": {
-      "en": "Leave blank to use the provider default.",
-      "zh": "留空则使用提供方默认地址。"
+      "en": "Include the API prefix, such as https://api.deepseek.com/anthropic/v1. The provider appends /messages. Leave blank to restore the default.",
+      "zh": "填写含 API 前缀的地址，例如 https://api.deepseek.com/anthropic/v1；程序追加 /messages，留空恢复默认。"
+    },
+    "count": {
+      "en": "Results per search",
+      "zh": "每次搜索结果数"
+    },
+    "countHint": {
+      "en": "Results returned per query: an integer from 1 to 50, default 10. This controls result count, not search calls. web_search keeps no more sources than its own result limit.",
+      "zh": "每个查询返回的结果条数，须为 1–50 的整数，默认 10；不控制搜索调用次数。web_search 保留的来源数不超过其自身的结果上限。"
     },
     "description": {
       "en": "Set up the DeepSeek search provider.",
       "zh": "设置 DeepSeek 的搜索提供方。"
+    },
+    "invalidCount": {
+      "en": "Enter an integer from 1 to 50, or leave blank to use the default.",
+      "zh": "请填 1–50 的整数；留空表示使用默认值。"
     },
     "invalidNumber": {
       "en": "Enter a number, or leave blank to use the default.",
@@ -7591,8 +8693,8 @@
       "zh": "单次请求最多搜索次数"
     },
     "maxUsesHint": {
-      "en": "How many times one request may search before it must answer.",
-      "zh": "一次请求在必须作答前最多可以搜索多少次。"
+      "en": "How many searches the auxiliary model may run within one Messages request. Applies only to the Messages API.",
+      "zh": "辅助模型在一次 Messages 请求内最多可执行的搜索次数，仅适用于 Messages API。"
     },
     "overridden": {
       "en": "Overridden",
@@ -7618,6 +8720,22 @@
       "en": "Saving…",
       "zh": "保存中…"
     },
+    "searchApiBaseUrl": {
+      "en": "Search / Fetch API base URL",
+      "zh": "Search / Fetch API 基础地址"
+    },
+    "searchApiBaseUrlHint": {
+      "en": "Include the API prefix, such as https://api.deepseek.com/v1/tools. The provider appends /search or /fetch. Leave blank to restore the default.",
+      "zh": "填写含 API 前缀的地址，例如 https://api.deepseek.com/v1/tools；程序追加 /search 或 /fetch，留空恢复默认。"
+    },
+    "searchGuide": {
+      "en": "Search & Fetch guide",
+      "zh": "网页搜索与抓取指南"
+    },
+    "searchGuideUrl": {
+      "en": "https://api-docs.deepseek.com/guides/search",
+      "zh": "https://api-docs.deepseek.com/zh-cn/guides/search"
+    },
     "title": {
       "en": "Web search",
       "zh": "网页搜索"
@@ -7625,6 +8743,14 @@
     "unavailable": {
       "en": "This plugin is not loaded, so it cannot be configured right now.",
       "zh": "该插件当前未加载，暂时无法配置。"
+    },
+    "useSearchApi": {
+      "en": "Use the new Web Search API",
+      "zh": "启用新版 Web 搜索 API"
+    },
+    "useSearchApiHint": {
+      "en": "Off by default: search runs through DeepSeek Messages. For the new Web Search API's features and pricing, see the ",
+      "zh": "默认关闭，搜索通过 DeepSeek Messages 完成。新版 Web 搜索 API 功能与计费详见"
     }
   },
   "shortcuts": {
@@ -8738,6 +9864,10 @@
       "en": "Expand {label} descendants",
       "zh": "展开 {label} 的下级子智能体"
     },
+    "catalog.migrationRequired": {
+      "en": "Migration required",
+      "zh": "需要迁移"
+    },
     "count.running.one": {
       "en": "{count} subagent running",
       "zh": "{count} 个子智能体，正在运行"
@@ -8809,6 +9939,10 @@
     "mode.continuable": {
       "en": "continuable",
       "zh": "可继续"
+    },
+    "mode.external": {
+      "en": "External task",
+      "zh": "外部任务"
     },
     "mode.oneShot": {
       "en": "one-shot",
@@ -8972,6 +10106,10 @@
       "en": "Hierarchy",
       "zh": "层级"
     },
+    "details.lastAttemptError": {
+      "en": "Last attempt error",
+      "zh": "上次尝试错误"
+    },
     "details.model": {
       "en": "Model",
       "zh": "模型"
@@ -9003,10 +10141,6 @@
     "details.retryDelay": {
       "en": "Retry delay",
       "zh": "重试延迟"
-    },
-    "details.scheduled": {
-      "en": "Scheduled",
-      "zh": "已计划"
     },
     "details.source": {
       "en": "Source",
@@ -9674,6 +10808,14 @@
       "en": "Your draft changed. The transcript is preserved and can be inserted at the current cursor.",
       "zh": "草稿已被修改。识别文字已保留，可在当前光标位置插入。"
     },
+    "deviceMissing": {
+      "en": "Microphone unavailable. Choose another input device.",
+      "zh": "麦克风不可用，请选择其他输入设备"
+    },
+    "deviceUnavailable": {
+      "en": "Unavailable",
+      "zh": "不可用"
+    },
     "dictate": {
       "en": "Dictate",
       "zh": "听写"
@@ -9781,6 +10923,14 @@
     "failed": {
       "en": "Speech recognition failed: {message}",
       "zh": "语音识别失败：{message}"
+    },
+    "inputDevice": {
+      "en": "Input device",
+      "zh": "输入设备"
+    },
+    "inputLevel": {
+      "en": "Microphone input level",
+      "zh": "麦克风输入电平"
     },
     "insert": {
       "en": "Insert text",
@@ -10026,6 +11176,14 @@
       "en": "Stop and transcribe",
       "zh": "停止并识别"
     },
+    "systemMicrophone": {
+      "en": "System default",
+      "zh": "系统默认"
+    },
+    "systemMicrophoneNamed": {
+      "en": "System default ({name})",
+      "zh": "系统默认（{name}）"
+    },
     "tooLarge": {
       "en": "The recording exceeds the service limit. Try a shorter recording.",
       "zh": "录音超过服务限制，请缩短录音后重试。"
@@ -10037,6 +11195,14 @@
     "unavailable": {
       "en": "This browser cannot record audio. Use a browser with microphone support.",
       "zh": "当前浏览器不支持录音，请使用支持麦克风的浏览器。"
+    },
+    "unnamedMicrophone": {
+      "en": "Microphone {number}",
+      "zh": "麦克风 {number}"
+    },
+    "unnamedSelectedMicrophone": {
+      "en": "Microphone",
+      "zh": "麦克风"
     },
     "wakingShort": {
       "en": "Waking…",
@@ -10242,6 +11408,14 @@
       "en": "Delete workspace",
       "zh": "删除工作区"
     },
+    "draft.initializationFailed": {
+      "en": "Could not fill the draft. Please try again shortly.",
+      "zh": "暂时无法填入草稿，请稍后重试"
+    },
+    "draft.workspaceRequired": {
+      "en": "Choose a workspace first.",
+      "zh": "请先选择工作区"
+    },
     "empty.noMatches": {
       "en": "No matches",
       "zh": "无匹配结果"
@@ -10321,6 +11495,10 @@
     "menu.pinSession": {
       "en": "Pin session",
       "zh": "置顶会话"
+    },
+    "menu.sessionId": {
+      "en": "Copy Session ID",
+      "zh": "复制 Session ID"
     },
     "menu.unarchiveSession": {
       "en": "Unarchive session",
@@ -10542,9 +11720,25 @@
       "en": "New session failed: {message}",
       "zh": "新建会话失败：{message}"
     },
+    "toast.forkRequiresOpen": {
+      "en": "Open the original session to complete migration before creating a branch.",
+      "zh": "请先打开原会话完成迁移，再创建分支"
+    },
+    "toast.openForkSource": {
+      "en": "Open original session",
+      "zh": "打开原会话"
+    },
     "toast.pinFailed": {
       "en": "Pin failed. Try again later.",
       "zh": "置顶失败，请稍后重试"
+    },
+    "toast.sessionIdCopied": {
+      "en": "Session ID copied",
+      "zh": "Session ID 已复制"
+    },
+    "toast.sessionIdCopyFailed": {
+      "en": "Copy failed. Try again.",
+      "zh": "复制失败，请重试"
     },
     "toast.stoppedAndArchived": {
       "en": "Session stopped and archived. You can ",

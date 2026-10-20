@@ -27,6 +27,7 @@
   "status.stopping": "zatrzymywanie",
   "terminal.collapse": "Zwiń",
   "terminal.collapseAria": "Zwiń wyjście",
+  "terminal.commandLine": "Wiersz polecenia {n}",
   "terminal.copied": "Skopiowano",
   "terminal.copy": "Kopiuj",
   "terminal.done": "gotowe",

@@ -1,0 +1,6 @@
+{
+  "band": "Mody Claude Code",
+  "press.failed": "Przycisk nie zadziałał: {message}",
+  "press.stale": "Ten przycisk należał do wcześniejszego rysunku; pasek się odświeżył",
+  "pressing": "Działa…"
+}

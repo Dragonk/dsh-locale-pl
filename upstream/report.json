@@ -1,7 +1,7 @@
 {
   "totals": {
-    "namespaces": 58,
-    "keys": 2615,
+    "namespaces": 65,
+    "keys": 2910,
     "warnings": 2,
     "notes": 1
   },
@@ -21,10 +21,17 @@
       ]
     },
     "chat": {
-      "keys": 186,
+      "keys": 191,
       "files": [
         "packages/client/ui-chat/src/client/apply.ts",
         "packages/client/ui-chat/src/client/locale.ts"
+      ]
+    },
+    "claude-code-mods": {
+      "keys": 4,
+      "files": [
+        "packages/experimental/client-ui-claude-code-mods/src/client/locales.ts",
+        "packages/experimental/client-ui-claude-code-mods/src/client/mount.ts"
       ]
     },
     "command": {
@@ -44,7 +51,7 @@
       ]
     },
     "conversation": {
-      "keys": 369,
+      "keys": 373,
       "files": [
         "packages/client/ui-conversation/src/client/apply.ts",
         "packages/client/ui-conversation/src/client/locales.ts"
@@ -55,6 +62,20 @@
       "files": [
         "packages/extensions/ui-cordis/src/client/index.ts",
         "packages/extensions/ui-cordis/src/client/locales.ts"
+      ]
+    },
+    "cotTranslation": {
+      "keys": 32,
+      "files": [
+        "packages/experimental/client-ui-cot-translation/src/client/locales.ts",
+        "packages/experimental/client-ui-cot-translation/src/client/mount.ts"
+      ]
+    },
+    "deepseek-model-label-1017": {
+      "keys": 1,
+      "files": [
+        "packages/client/ui-deepseek-model-label-1017/src/client/index.ts",
+        "packages/client/ui-deepseek-model-label-1017/src/client/locales.ts"
       ]
     },
     "deliverables": {
@@ -98,8 +119,15 @@
         "packages/client/ui-goal/src/client/locales.ts"
       ]
     },
+    "inspectorPanel": {
+      "keys": 5,
+      "files": [
+        "packages/experimental/inspector/src/client/bottom/locales.ts",
+        "packages/experimental/inspector/src/client/bottom/page.tsx"
+      ]
+    },
     "job": {
-      "keys": 39,
+      "keys": 40,
       "files": [
         "packages/client/ui-jobs/src/client/index.ts",
         "packages/client/ui-jobs/src/client/locales.ts"
@@ -134,10 +162,17 @@
       ]
     },
     "pluginManager": {
-      "keys": 189,
+      "keys": 221,
       "files": [
         "packages/client/ui-plugin-manager/src/client/index.ts",
         "packages/client/ui-plugin-manager/src/client/locales.ts"
+      ]
+    },
+    "pluginMarket": {
+      "keys": 78,
+      "files": [
+        "packages/client/ui-plugin-market/src/client/index.ts",
+        "packages/client/ui-plugin-market/src/client/locales.ts"
       ]
     },
     "question": {
@@ -148,7 +183,7 @@
       ]
     },
     "reference": {
-      "keys": 11,
+      "keys": 15,
       "files": [
         "packages/client/ui-reference/src/client/index.ts",
         "packages/client/ui-reference/src/client/locales.ts"
@@ -162,10 +197,24 @@
       ]
     },
     "schedule.manager": {
-      "keys": 187,
+      "keys": 188,
       "files": [
         "packages/client/ui-schedule/src/client/index.ts",
         "packages/client/ui-schedule/src/client/task-manager-locales.ts"
+      ]
+    },
+    "secretMask": {
+      "keys": 2,
+      "files": [
+        "packages/client/ui-secret-mask/src/client/index.ts",
+        "packages/client/ui-secret-mask/src/client/locales.ts"
+      ]
+    },
+    "session-inspector": {
+      "keys": 52,
+      "files": [
+        "packages/experimental/session-inspector/src/client/index.ts",
+        "packages/experimental/session-inspector/src/client/locales.ts"
       ]
     },
     "session-log-download": {
@@ -176,14 +225,14 @@
       ]
     },
     "settings": {
-      "keys": 34,
+      "keys": 41,
       "files": [
         "packages/client/ui-settings-general/src/client/index.ts",
         "packages/client/ui-settings-general/src/client/locales.ts"
       ]
     },
     "settings.account": {
-      "keys": 93,
+      "keys": 94,
       "files": [
         "packages/client/ui-settings-account/src/client/index.ts",
         "packages/client/ui-settings-account/src/client/locales.ts"
@@ -197,7 +246,7 @@
       ]
     },
     "settings.agentPreset": {
-      "keys": 41,
+      "keys": 47,
       "files": [
         "packages/client/ui-agent-preset/src/client/guide-locales.ts",
         "packages/client/ui-agent-preset/src/client/index.ts",
@@ -212,7 +261,7 @@
       ]
     },
     "settings.models": {
-      "keys": 113,
+      "keys": 134,
       "files": [
         "packages/client/ui-settings-models/src/client/index.ts",
         "packages/client/ui-settings-models/src/client/locales.ts"
@@ -225,7 +274,7 @@
       ]
     },
     "settings.pluginInventory": {
-      "keys": 40,
+      "keys": 37,
       "files": [
         "packages/client/ui-settings-plugin-inventory/src/client/index.ts",
         "packages/client/ui-settings-plugin-inventory/src/client/locales.ts"
@@ -260,14 +309,14 @@
       ]
     },
     "settings.theme": {
-      "keys": 9,
+      "keys": 25,
       "files": [
         "packages/client/ui-theme/src/client/index.ts",
         "packages/client/ui-theme/src/client/locales.ts"
       ]
     },
     "settings.webSearch": {
-      "keys": 18,
+      "keys": 27,
       "files": [
         "packages/client/ui-settings-web-search/src/client/index.ts",
         "packages/client/ui-settings-web-search/src/client/locales.ts"
@@ -379,7 +428,7 @@
       ]
     },
     "subagent": {
-      "keys": 39,
+      "keys": 41,
       "files": [
         "packages/client/ui-subagent/src/client/index.ts",
         "packages/client/ui-subagent/src/client/locales.ts"
@@ -393,7 +442,7 @@
       ]
     },
     "voice-input": {
-      "keys": 101,
+      "keys": 109,
       "files": [
         "packages/experimental/client-ui-voice-input/src/client/locales.ts",
         "packages/experimental/client-ui-voice-input/src/client/mount.ts"
@@ -407,7 +456,7 @@
       ]
     },
     "workspace": {
-      "keys": 112,
+      "keys": 119,
       "files": [
         "packages/client/ui-workspace/src/client/index.ts",
         "packages/client/ui-workspace/src/client/locales.ts"

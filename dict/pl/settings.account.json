@@ -28,6 +28,7 @@
   "modelSignInRequired": "Model jest niedostępny. Zaloguj się i spróbuj ponownie.",
   "more": "Więcej",
   "nav": "Konto",
+  "noResponse": "Coś poszło nie tak. Sprawdź połączenie z siecią i spróbuj ponownie.",
   "onboardingArtworkLocale": "en",
   "onboardingBack": "Wstecz",
   "onboardingBrand": "DeepSeek Harness",
