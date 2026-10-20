@@ -29,6 +29,15 @@ const LANGUAGE = { id: 'pl', label: 'Polski', fallback: 'en' }
 /** Package id; must equal the package.json `name` the loader row mounts. */
 const PACKAGE_ID = 'dsh-locale-pl'
 
+/**
+ * Labels of the Windows desktop caption menubar. The desktop shell's preload
+ * mounts it as `div[data-windows-menu]` with an open shadow root and only knows
+ * en/zh (`apps/desktop/src/locale.ts`), so it is outside the locale registry.
+ * The dropdowns it opens are native menus owned by the main process and stay
+ * untranslated.
+ */
+const SHELL_MENU = { application: 'Aplikacja', edit: 'Edycja', menuBar: 'Menu aplikacji' }
+
 let files
 try {
   files = readdirSync(DICT_DIR).filter((f) => f.endsWith('.json')).sort()
@@ -76,9 +85,51 @@ const body = `window.__ModuleLoader__.load({
 
 		const DICTIONARIES = ${JSON.stringify(dictionaries, null, 2)};
 
+		const SHELL_MENU = ${JSON.stringify(SHELL_MENU)};
+
 		const inject = ['locale'];
 
+		/**
+		 * Keep the desktop caption menubar labels Polish while the document language is
+		 * Polish. The shell rewrites them on every language or palette change, so an
+		 * observer re-applies them; writes happen only when the text differs.
+		 * @returns teardown for the observers.
+		 */
+		function translateShellMenu() {
+			if (typeof document === 'undefined') return () => {}
+			const root = document.documentElement
+			const watched = new WeakSet()
+			const isPolish = () => (root.lang || '').toLowerCase().split('-')[0] === LANGUAGE.id
+			const shadowObserver = new MutationObserver(() => sync())
+			const sync = () => {
+				const host = document.querySelector('[data-windows-menu]')
+				const shadow = host && host.shadowRoot
+				const bar = shadow && shadow.querySelector('[role=menubar]')
+				if (!bar) return
+				if (!watched.has(shadow)) {
+					watched.add(shadow)
+					shadowObserver.observe(shadow, { childList: true, subtree: true, characterData: true })
+				}
+				if (!isPolish()) return
+				const buttons = bar.querySelectorAll('button')
+				const labels = [SHELL_MENU.application, SHELL_MENU.edit]
+				buttons.forEach((button, i) => {
+					if (labels[i] !== undefined && button.textContent !== labels[i]) button.textContent = labels[i]
+				})
+				if (bar.getAttribute('aria-label') !== SHELL_MENU.menuBar) bar.setAttribute('aria-label', SHELL_MENU.menuBar)
+			}
+			const pageObserver = new MutationObserver(() => sync())
+			pageObserver.observe(root, { attributes: true, attributeFilter: ['lang'] })
+			if (document.body) pageObserver.observe(document.body, { childList: true })
+			sync()
+			return () => {
+				pageObserver.disconnect()
+				shadowObserver.disconnect()
+			}
+		}
+
 		function apply(ctx) {
+			ctx.effect(() => translateShellMenu(), '${PACKAGE_ID}: desktop caption menu')
 			ctx.effect(
 				() => ctx.locale.addLanguage(LANGUAGE),
 				'${PACKAGE_ID}: language',

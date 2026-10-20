@@ -1,8 +1,19 @@
 {
   "chip.exitFailed": "Nie udało się wyjść z trybu planowania",
   "chip.label": "Plan",
-  "chip.off.aria": "Tryb planowania wyłączony, naciśnij, aby włączyć",
-  "chip.off.title": "Tryb planowania wyłączony — kliknij, aby włączyć (/plan)",
   "chip.on.aria": "Tryb planowania włączony, naciśnij, aby wyłączyć",
-  "chip.on.title": "Tryb planowania włączony — kliknij, aby wyłączyć (/plan off)"
+  "chip.on.title": "Tryb planowania włączony: kliknij, aby wyłączyć (/plan off)",
+  "preview.action": "Otwórz",
+  "preview.document": "Plan · Markdown",
+  "preview.expired": "Ten tymczasowy podgląd planu wygasł. Otwórz go ponownie z karty oczekującej weryfikacji.",
+  "preview.failed": "Nie udało się wczytać planu",
+  "preview.full": "Wyświetl cały plan",
+  "preview.historyUnavailable": "Historia sesji jest niedostępna",
+  "preview.invalidAddress": "Nieprawidłowy adres planu",
+  "preview.loading": "Wczytywanie planu…",
+  "preview.notFound": "Nie znaleziono tego planu",
+  "preview.open": "Otwórz plan w panelu bocznym",
+  "preview.openNamed": "Otwórz plan: {title}",
+  "preview.title": "Plan",
+  "preview.unavailable": "Podgląd planu jest niedostępny"
 }

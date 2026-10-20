@@ -1,6 +1,6 @@
 {
   "failed": "Nie udało się wyświetlić podglądu tego dokumentu HTML.",
   "frame": "Podgląd dokumentu HTML",
-  "loading": "Przygotowywanie podglądu HTML…",
+  "loading": "Renderowanie dokumentu...",
   "title": "HTML"
 }

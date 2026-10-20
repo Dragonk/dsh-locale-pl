@@ -33,9 +33,15 @@
   "app.windsurf": "Windsurf",
   "app.xcode": "Xcode",
   "app.zed": "Zed",
-  "menu.aria": "Otwórz w",
-  "menu.toggle": "Wybierz aplikację, w której otworzyć",
-  "open.error": "Nie udało się otworzyć",
-  "open.title": "Otwórz obszar roboczy w {app}",
-  "open.tooltip": "Otwórz lokalnie"
+  "open.title": "Otwórz w {app}",
+  "open.tooltip": "Otwórz lokalnie",
+  "path.appDefault": "{app} (domyślnie)",
+  "path.appsError": "Nie udało się wczytać aplikacji",
+  "path.more": "Więcej sposobów otwierania",
+  "path.open": "Otwórz",
+  "path.openError": "Nie udało się otworzyć. Spróbuj ponownie.",
+  "path.reveal": "Pokaż lokalizację pliku",
+  "path.revealError": "Nie udało się pokazać lokalizacji pliku. Spróbuj ponownie.",
+  "shortcut.busy": "Otwieranie obszaru roboczego",
+  "shortcut.unavailable": "Bieżący obszar roboczy lub lokalna aplikacja są niedostępne"
 }

@@ -1,9 +1,18 @@
 {
+  "auto.badge": "EKSP",
+  "auto.confirm.acknowledge": "Rozumiem to ryzyko i chcę kontynuować",
+  "auto.confirm.description": "Automatyczny przegląd działa bez piaskownicy. Przed każdym natywnym wywołaniem narzędzia i każdym wywołaniem wewnętrznym PTC ten sam model, którego używa bieżący agent, ocenia, czy na nie zezwolić; każde odrzucone przez niego wywołanie zatwierdzasz lub odrzucasz samodzielnie. Ta funkcja jest eksperymentalna, może błędnie zezwalać na działania lub je blokować i zużywa dodatkowe tokeny.",
+  "auto.confirm.enable": "Włącz automatyczny przegląd",
+  "auto.confirm.title": "Włączyć automatyczny przegląd (eksperymentalne)?",
+  "auto.description": "Działanie bez piaskownicy po eksperymentalnym przeglądzie tym samym modelem każdego natywnego wywołania narzędzia i wywołania wewnętrznego PTC.",
+  "auto.label": "Automatyczny przegląd",
+  "close": "Zamknij",
   "confirm.acknowledge": "Rozumiem ryzyko i chcę kontynuować",
   "confirm.cancel": "Anuluj",
   "confirm.description": "Pełny dostęp ogranicza liczbę potwierdzeń i pozwala agentowi wykonywać więcej działań bezpośrednio, w tym operacje wrażliwe, zmiany w plikach i polecenia zewnętrzne. Używaj go tylko wtedy, gdy ufasz bieżącemu zadaniu.",
   "confirm.enable": "Włącz pełny dostęp",
   "confirm.title": "Włączyć pełny dostęp?",
+  "mode": "Tryb dostępu, bieżący: {name}",
   "preset.fullAccess": "Pełny dostęp",
   "preset.readOnly": "Tylko odczyt",
   "preset.workspaceWrite": "Zapis w obszarze roboczym"

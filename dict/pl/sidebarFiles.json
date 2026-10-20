@@ -1,4 +1,7 @@
 {
+  "autoRefresh": "Automatyczne odświeżanie",
+  "autoRefresh.disable": "Wyłącz automatyczne odświeżanie",
+  "autoRefresh.enable": "Włącz automatyczne odświeżanie",
   "empty": "Pusty katalog",
   "entry.other": "To nie jest plik ani katalog, więc nie można tego otworzyć.",
   "error.notDirectory": "To nie jest katalog.",
@@ -10,6 +13,7 @@
   "loading": "Odczytywanie…",
   "noWorkspace": "Ta sesja nie ma katalogu obszaru roboczego.",
   "reload": "Wczytaj ponownie",
+  "shortcut.noSession": "Najpierw wybierz sesję",
   "truncated": "Zbyt wiele pozycji; pokazano tylko część.",
   "type.label": "Pliki"
 }

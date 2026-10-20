@@ -1,7 +1,13 @@
 {
   "failed": "Nie udało się wyświetlić tego obrazu.",
-  "loading": "Otwieranie obrazu…",
+  "loading": "Renderowanie dokumentu...",
   "preview": "Podgląd obrazu: {name}",
   "title": "Obraz",
-  "unsupported": "Podgląd obrazu wymaga pełnej zawartości pliku."
+  "unsupported": "Podgląd obrazu wymaga pełnej zawartości pliku.",
+  "zoomControls": "Sterowanie powiększeniem",
+  "zoomFitWidth": "Dopasuj do szerokości",
+  "zoomIn": "Powiększ",
+  "zoomMenu": "Wybierz powiększenie",
+  "zoomOut": "Pomniejsz",
+  "zoomValue": "{percent}%"
 }

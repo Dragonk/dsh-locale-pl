@@ -171,7 +171,10 @@ for (const [ns, dict] of plDicts) {
       warnings.push(`[${ns}] '${key}': pl value is identical to en (probably untranslated)`)
     }
   }
-  coverage.push({ ns, total: Object.keys(upstream).length, translated })
+  // An empty English source needs no translation (the en fallback already renders ''), and an
+  // empty pl value is rejected above, so such keys are excluded from the coverage total.
+  const emptySource = Object.keys(upstream).filter((k) => upstream[k]?.en === '' && dict[k] === undefined).length
+  coverage.push({ ns, total: Object.keys(upstream).length - emptySource, translated })
 }
 
 const untranslated = Object.keys(corpus)

@@ -1,0 +1,16 @@
+{
+  "description": "Ogranicz, jak długo może działać każde polecenie i ile danych może wypisać.",
+  "invalidNumber": "Wpisz liczbę lub pozostaw puste pole, aby użyć wartości domyślnej.",
+  "maxOutputBytes": "Limit wyjścia na strumień (bajty)",
+  "maxOutputBytesHint": "Wyjście ponad ten limit trafia do pliku tymczasowego, zamiast przepaść.",
+  "overridden": "Nadpisane",
+  "readOnly": "To wdrożenie przechowuje ustawienia w trybie tylko do odczytu.",
+  "reset": "Przywróć domyślne",
+  "save": "Zapisz",
+  "saveFailed": "Wdrożenie nie zaakceptowało tych wartości; pozostawiono je do poprawienia.",
+  "saving": "Zapisywanie…",
+  "timeoutMs": "Limit czasu polecenia (ms)",
+  "timeoutMsHint": "Jak długo jedno polecenie może działać, zanim zostanie zakończone.",
+  "title": "Shell",
+  "unavailable": "Ten plugin nie jest wczytany, więc nie można go teraz skonfigurować."
+}

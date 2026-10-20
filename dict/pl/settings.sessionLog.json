@@ -1,0 +1,6 @@
+{
+  "description": "Pomóż ulepszać modele i produkty DeepSeek.",
+  "failed": "Nie udało się zapisać ustawienia",
+  "saved": "Zapisano ustawienie",
+  "title": "Wysyłaj log sesji przy korzystaniu z oficjalnego API modelu"
+}

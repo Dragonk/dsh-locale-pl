@@ -67,6 +67,8 @@ test('every upstream key is translated', () => {
   const missing = []
   for (const ns of Object.keys(CORPUS)) {
     for (const key of Object.keys(CORPUS[ns])) {
+      // An empty English source needs no translation: the en fallback already renders ''.
+      if (CORPUS[ns][key]?.en === '') continue
       if (!(key in (pl[ns] ?? {}))) missing.push(`${ns}/${key}`)
     }
   }
@@ -119,7 +121,8 @@ test('the bundle registers Polski with an English fallback', () => {
     { id: languages[0].id, label: languages[0].label, fallback: languages[0].fallback },
     { id: 'pl', label: 'Polski', fallback: 'en' },
   )
-  assert.equal(kicked, Object.keys(pl).length + 1, 'every registration rides ctx.effect')
+  // language + one per dictionary + the desktop caption menu labels
+  assert.equal(kicked, Object.keys(pl).length + 2, 'every registration rides ctx.effect')
 })
 
 test('the identical-to-en allowlist is exact', () => {
